@@ -1,0 +1,338 @@
+---
+title: "An gRadual Introduction to Web APIs and JSON"
+subtitle: "PDX-R User Group"
+author: Ted Laderas
+format: 
+  revealjs:
+    scrollable: true
+    standalone: true
+echo: true
+---
+
+```{r setup}
+library(httr2)
+library(jsonlite)
+```
+
+# Learning Objectives
+
+By the end of this exercise, you should be able to:
+
+- **Define** web APIs (Application Programming Interfaces) and how to interact with them
+- **Utilize** the `{httr2}` package to send requests to an API
+- **Define** the basic elements of JSON 
+- **Use** the `{jsonlite}` to parse 
+
+## What are APIs?
+
+You may have heard of the term and wondered what it means. API is short for **A**pplication **P**rogram **I**nterface. In general, an API provides a way to interact with a code library. 
+
+We'll be using a very specific definition: 
+
+> An API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.
+
+Even more specifically, we'll focus on Web APIs that let us fetch data.
+
+## The Basic Recipe
+
+1. Request data/information using an API endpoint (GET/POST)
+2. Receive a response from the API server
+3. Figure out how to get the data out of the response (usually involves working with the JSON).
+
+## Let's make it more concrete
+
+One API that's available is [Cat Facts](https://catfact.ninja/). This is an API that will give you random cat facts if you call a specific URL.
+
+If you look at [the API documentation for Cat Facts](https://catfact.ninja/docs/api-docs.json), you'll see that there are a number of **endpoints** that are defined.
+
+**Endpoints** are ways to communicate with the API to get what you want. Literally, an endpoint like `/fact` goes at the end of a URL, such as:
+
+```
+https://catfact.ninja/fact
+```
+
+I tend to think of endpoints like calling functions in a library.
+
+## Let's Try it Out
+
+For example, if I wanted a random cat fact, I could hit this link (try it out in your browser):
+
+<https://catfact.ninja/fact>
+
+The response from catfacts is something like this:
+
+```
+{"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you.","length":90}
+```
+
+This is in JSON format, which we'll talk about in a sec.
+
+## Calling APIs from R using `httr2`
+
+The trick when sending API requests is that there is a "polite" way to do it, which is where the `httr2` package comes in.
+
+Okay, now we have an API endpoint we want to hit: <https://catfact.ninja/fact>. How do we call it in R?
+
+We first encode the URL with `httr2::request()`. Then we'll show the what the actual request looks like with `req_dry_run()`:
+
+```{r}
+url <- "https://catfact.ninja/fact"
+
+req <- httr2::request(url)
+```
+
+## Looking at what we send with `httr2::req_dry_run()`
+
+```{r}
+req |>
+  httr2::req_dry_run()
+```
+
+Passing `req` into `httr2::req_dry_run()` will show us everything that `httr2` will send along with our request to the API server. It shows:
+
+- the method we're using for the request (`GET`)
+- the host we're hitting (`catfact.ninja`),
+- the endpoint we want (`/fact`), and
+- the `User-Agent` we're using (`httr2/0.2.2`)
+
+## Calling the API using `req_perform()`
+
+Let's actually call the Cat Facts API:
+
+```{r}
+response <- req |>
+  req_perform()
+
+response
+```
+
+## Response from catfacts.ninja
+
+We can see that we get a structure that has a `Body`, which has what we're looking for. Specifically the Body contains a `content-type` of `application/json`.
+
+```{r}
+response |>
+  httr2::resp_raw()
+```
+## We just want the body
+
+So we can extract the body information using `httr2::resp_body_json()` (Your fact will differ from mine):
+
+```{r}
+json_bit <- response |>
+  httr2::resp_body_json()
+
+json_bit
+```
+
+## JSON is returned as a list
+
+Ok, we've got a list and we need to extract our info:
+
+```{r}
+json_bit$fact
+```
+
+## What is this JSON stuff?
+
+- **J**ava**S**cript **O**bject **N**otation
+- Common format for communicating with Application Program Interface (API) servers and receiving results/data from that API
+- Used to access DNAnexus API servers
+
+
+## Why is knowing JSON useful?
+
+- It is used to send requests using POST
+- It is used to encode data
+
+
+# APIs use JSON to handle both requests and responses
+
+
+## Components of a JSON file
+
+- Object: 
+  - `{}` Used to contain key-value pairs and nest values
+- key:value pairs
+  - `"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you."`
+- Lists:
+  - `[]`- Used to submit multiple values
+  - Much like python lists
+
+.footnote[http://json-schema.org/draft-04/json-schema-core.html]
+
+
+## key/value pairs
+
+- have the format: `"key": "value"`
+- example:
+
+```
+{
+"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you."
+}
+```
+
+
+## key/object
+
+```
+{
+"report_html": {
+    "dnanexus_link": "file-G4x7GX80VBzQy64k4jzgjqgY"
+  }
+}
+```
+
+## Lists
+
+```
+["mycat1", "mycat2", "mycat3"]
+```
+
+## How does R translate JSON?
+
+As we've discovered, JSON objects are mostly converted to lists in R using either `httr2` or `jsonlite`.
+
+But we often want a `data.frame`!
+
+![Meme that says "I Just Wanted a Data Frame"](data.frame.jpeg)
+
+## Let's try another endpoint
+
+Change your `url` to <https://catfact.ninja/facts> and see what happens. How does the returned structure differ from <https://catfact.ninja/fact>?
+
+```{r}
+url <- "https://catfact.ninja/facts"
+
+resp <- httr2::request(url) |>
+  httr2::req_perform() 
+
+resp |>
+  resp_raw()
+```
+
+## A More complicated response
+
+If we poke around, we'll see that there is a list entry called "data" in `resp`. `data` is in a list format, where each element has a `length` and a `fact`. We can extract this using `purrr::map()` and use `unlist()` to simplify it.
+
+```{r}
+#| echo: true
+resp_json <- resp |>
+  resp_body_json()
+
+names(resp_json)
+```
+
+## It's a List!
+
+If we dig further, we can see that the `$data` slot is a numbered list. 
+
+```{r}
+#| echo: true
+resp_json$data
+```
+
+## `purrr` to the rescue
+
+We want the 10 facts out of the list. We can use `purrr::pluck()` to extract the `data` slot and `purrr::map` to grab the fact for each of the numbered slots:
+
+```{r}
+#| echo: true
+
+newresp <- resp |>
+  httr2::resp_body_json() |>
+  purrr::pluck("data") |>
+  purrr::map(~.x$fact)
+
+unlist(newresp)
+```
+
+
+## Datasets that are Provided as JSON
+
+Here's one dataset that is actually provided as JSON: [Citibikes API](https://gbfs.citibikenyc.com/gbfs/en/station_information.json). If you click on this link, it will retrieve a JSON file directly.
+
+Here's the first few lines of this JSON file:
+
+```
+{"data":{"stations":[
+
+{"has_kiosk":true,"rental_uris":{"android":"https://bkn.lft.to/lastmile_qr_scan","ios":"https://bkn.lft.to/lastmile_qr_scan"},"name":"Harborside","eightd_has_key_dispenser":false,"external_id":"2de92329-48d0-4cf7-85df-172f91bbb320","eightd_station_services":[],"rental_methods":["KEY","CREDITCARD"],"lon":-74.034234,"capacity":30,"station_type":"classic","region_id":"70","legacy_id":"3639","station_id":"2de92329-48d0-4cf7-85df-172f91bbb320","electric_bike_surcharge_waiver":false,"short_name":"JC104","lat":40.7192517},
+
+{"has_kiosk":true,"rental_uris":{"android":"https://bkn.lft.to/lastmile_qr_scan","ios":"https://bkn.lft.to/lastmile_qr_scan"},"name":"11 St & Washington St","eightd_has_key_dispenser":false,"external_id":"f417d8da-0f15-49b0-9e3c-3c3e55c2691d","eightd_station_services":[],"rental_methods":["KEY","CREDITCARD"],"lon":-74.02715027332306,"capacity":24,"station_type":"classic","region_id":"311","legacy_id":"4518","station_id":"f417d8da-0f15-49b0-9e3c-3c3e55c2691d","electric_bike_surcharge_waiver":false,"short_name":"HB502","lat":40.74998490907138},
+
+{"has_kiosk":true,"rental_uris":{"android":"https://bkn.lft.to/lastmile_qr_scan","ios":"https://bkn.lft.to/lastmile_qr_scan"},"name":"4 St & Grand St","eightd_has_key_dispenser":false,"external_id":"3d1db3fa-1df5-46c8-baf3-619b729f5bda","eightd_station_services":[],"rental_methods":
+...
+```
+
+## WTF
+
+OMG, this is way too complex! The `{jsonlite}` package gives us a function called `fromJSON()` that will decode this datasource:
+
+```{r}
+citibikes <- fromJSON("https://gbfs.citibikenyc.com/gbfs/en/station_information.json")
+names(citibikes)
+```
+
+## WTF, Part 2
+
+The `data` slot of this list contains the actual data about the stations. 
+
+This data was originally encoded in JSON, but `fromJSON()` is smart enough to guess that it's a data.frame. That's because it was organized as a list, with each row encoded as a separate object.
+
+```{r}
+knitr::kable(data.frame(citibikes$data$stations))
+```
+
+## Leaflet is awesome
+
+Now we have the `data.frame` Let's plot these stations:
+
+```{r}
+library(leaflet)
+
+cit <- data.frame(citibikes$data$stations)
+
+leaflet::leaflet(cit) |>
+  addTiles() |>
+  setView(lng = -74.0060, lat=   40.7128, zoom=12) |>
+  addCircles(lat = ~lat, lng = ~lon)
+
+```
+
+## {tidyjson}
+
+We were lucky this time around, but sometimes the JSON is not so `data.frame` friendly.
+
+However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in.
+
+
+## POST: when you need to provide more info to the API
+
+So far, we've just worked with APIs that use urls. 
+
+There is an alternate method called POST that lets us add a "body" to our request. 
+
+Guess what's in the body? Usually JSON.
+
+## How do we make APIs?
+
+You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
+
+```{r}
+
+
+```
+
+## Where Next?
+
+We've only covered APIs that don't require authentication. To access a lot of APIs, you will need an authentication token that you will need to provide in your API request.
+
+## More About APIs
+
+If you want a larger overview of APIs, this is a nice course and document: <https://zapier.com/learn/apis/> It describes in much greater detail about request and response structure, the types of requests (GET, POST, SET, DELETE), and API design.
+
+## Http Testing in R
+
+This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server, which is extremely helpful for debugging without hitting an API too many times.
