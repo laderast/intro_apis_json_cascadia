@@ -6,12 +6,18 @@ format:
   revealjs:
     scrollable: true
     standalone: true
+    preview-links: true
+    progress: true
+    footer: <https://laderast.github.io/intro_apis_json>
 echo: true
 ---
+
+## These are the packages you need:
 
 ```{r setup}
 library(httr2)
 library(jsonlite)
+library(tidyjson)
 ```
 
 # Learning Objectives
@@ -35,9 +41,11 @@ Even more specifically, we'll focus on Web APIs that let us fetch data.
 
 ## The Basic Recipe
 
+1. Try to make sense of the API documentation
+1. Identify an API endpoint
 1. Request data/information using an API endpoint (GET/POST)
-2. Receive a response from the API server
-3. Figure out how to get the data out of the response (usually involves working with the JSON).
+1. Receive a response from the API server
+1. Figure out how to get the data out of the response (usually involves working with the JSON).
 
 ## Let's make it more concrete
 
@@ -279,7 +287,9 @@ names(citibikes)
 
 The `data` slot of this list contains the actual data about the stations. 
 
-This data was originally encoded in JSON, but `fromJSON()` is smart enough to guess that it's a data.frame. That's because it was organized as a list, with each row encoded as a separate object.
+This data was originally encoded in JSON, but `jsonlite::fromJSON()` is smart enough to guess that it's a `data.frame`. 
+
+That's because the JSON was organized as a list, with each row encoded as a separate object.
 
 ```{r}
 knitr::kable(data.frame(citibikes$data$stations))
@@ -305,7 +315,8 @@ leaflet::leaflet(cit) |>
 
 We were lucky this time around, but sometimes the JSON is not so `data.frame` friendly.
 
-However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in.
+However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in. This package gives us some dplyr like verbs to manipulate JSON data into `data.frame` structures.
+
 
 
 ## POST: when you need to provide more info to the API
@@ -328,6 +339,10 @@ You can use the `{plumber}` package to publish your data as an API on a web serv
 ## Where Next?
 
 We've only covered APIs that don't require authentication. To access a lot of APIs, you will need an authentication token that you will need to provide in your API request.
+
+## Play with some free APIs
+
+<https://apipheny.io/free-api/>
 
 ## More About APIs
 
