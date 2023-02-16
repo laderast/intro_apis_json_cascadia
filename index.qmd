@@ -45,7 +45,7 @@ Even more specifically, we'll focus on Web APIs that let us fetch data.
 1. Identify an API endpoint
 1. Request data/information using an API endpoint (GET/POST)
 1. Receive a response from the API server
-1. Figure out how to get the data out of the response (usually involves working with the JSON).
+1. Figure out how to get the data out of the response (usually involves working with the returned JSON).
 
 ## Let's make it more concrete
 

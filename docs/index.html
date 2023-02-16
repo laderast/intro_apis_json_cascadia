@@ -445,7 +445,7 @@ Ted Laderas
 <li>Identify an API endpoint</li>
 <li>Request data/information using an API endpoint (GET/POST)</li>
 <li>Receive a response from the API server</li>
-<li>Figure out how to get the data out of the response (usually involves working with the JSON).</li>
+<li>Figure out how to get the data out of the response (usually involves working with the returned JSON).</li>
 </ol>
 </section>
 <section id="lets-make-it-more-concrete" class="slide level2">
@@ -515,21 +515,21 @@ Accept-Encoding: deflate, gzip</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>HTTP/1.1 200 OK
 server: nginx
-date: Thu, 16 Feb 2023 21:36:10 GMT
+date: Thu, 16 Feb 2023 21:45:46 GMT
 content-type: application/json
 vary: Accept-Encoding
 cache-control: no-cache, private
 x-ratelimit-limit: 100
 x-ratelimit-remaining: 99
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6Im5hOUkxcjFuNWRLamVJalVsMFBtUlE9PSIsInZhbHVlIjoiRHU1c043QTVPTGRkT2JKeEVWTjNxVXZJWXhBVHdvN05ZSVAzMzljU0RaNlVqbDZTajVYbU51QVpFZ0RBZmZZSEFpK2E2RGRUQllMSEJTOFhZaC8rNEd0SzA2SGlzWGQwK29yY0pGOXJnNVUrbWp5dEYzMVRsOExQUjNzVDJrVFgiLCJtYWMiOiJhNTBkOTc3N2EzYjBmYTNhMWZkMTUzMWM1MGE2OTMzNTUwYWQ4ZGMyZWI2NzBiNzViMjE0Mjk4YTA3YjU4ODBjIiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:36:10 GMT; path=/; samesite=lax
-set-cookie: catfacts_session=eyJpdiI6ImdUWnRqUDNYUVM5YXdra0pvRnFhQ2c9PSIsInZhbHVlIjoidnB6MFlSSFpQeHpqNUFUTmhEVXFOMjhualRyRkJPSFl3SmpwOTJmMHB5OWRoek8vZFJocVZ4Q05yNWxHM05TbjhUcG1EV1pkWlJiZVlLSHNJRENqUVh6MFFhY2gzMFNIbU40NUoydFAzYWFHT1hqeVUrNWdKenFHQjRDNDRjcG8iLCJtYWMiOiJiN2M5N2ExOTA2NmYwMzJmOTE3ZTg0NDlhZDc0MzIwMzY3ZTIyNThiMmJlNmY3MDM1ODRiNGZlZGUwY2Q5MGZjIiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:36:10 GMT; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6Im1aZDQ4bHRSdGV6b0s5WDlUOEVNM2c9PSIsInZhbHVlIjoicHN4Ry9wYjNPbDhFOFdFYmZydFFkMElkT2RLQTJWNWZDSzFIMzJvL25Bc0NIems5UVJiaFBoZ1kyaDRpZDZrcEdWZzhXeEQ5N3pHTjkybDRlMnlpRGxkb01KTERCWDdQaitXRlZpSnhBSTdrQXZiU1VtZUtaeVM0dHAzZldnSHEiLCJtYWMiOiJhMjA3NjdhNzllMjI3YWNkMTU4MTA0MzVmMTNiN2IxMjY3NjFhYjVlZjMyYjFkOGRmNmRmNTE3YjViM2JiZjE3IiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:45:46 GMT; path=/; samesite=lax
+set-cookie: catfacts_session=eyJpdiI6IkRSSEVIM3hpOHVEREdTNjdDY2pWdnc9PSIsInZhbHVlIjoieW9rVVp6TmdiQWdiVDVDblM5RXY4a25GbkpDdVBEVnZRbWcwcFRzc09HU2paT1B4MHlrK01kbk01RHZRUUdkbXJQR295czVrUDlzMVUwNkp0d2swRjFxWjNuQmRZc1BmMlJWQUUxVFR6Q0p6QWtUQVFreGovMnFUSTVnOHRqTCsiLCJtYWMiOiI0YmM0ZmIxOThmYjljOTI0N2Y3YTVmZDJkNWZhYjAxNDZmNzMxYjUwNzUwYTg2Y2Y5Yzc3N2Y0ZDFiYjNjMWQ1IiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:45:46 GMT; path=/; httponly; samesite=lax
 x-frame-options: SAMEORIGIN
 x-xss-protection: 1; mode=block
 x-content-type-options: nosniff
 content-encoding: gzip
 
-{"fact":"The strongest climber among the big cats, a leopard can carry prey twice its weight up a tree.","length":94}</code></pre>
+{"fact":"In multi-cat households, cats of the opposite sex usually get along better.","length":75}</code></pre>
 </div>
 </div>
 </section>
@@ -543,10 +543,10 @@ content-encoding: gzip
 <span id="cb10-4"><a href="#cb10-4"></a>json_bit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$fact
-[1] "The strongest climber among the big cats, a leopard can carry prey twice its weight up a tree."
+[1] "In multi-cat households, cats of the opposite sex usually get along better."
 
 $length
-[1] 94</code></pre>
+[1] 75</code></pre>
 </div>
 </div>
 </section>
@@ -556,7 +556,7 @@ $length
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>json_bit<span class="sc">$</span>fact</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "The strongest climber among the big cats, a leopard can carry prey twice its weight up a tree."</code></pre>
+<pre><code>[1] "In multi-cat households, cats of the opposite sex usually get along better."</code></pre>
 </div>
 </div>
 </section>
@@ -641,15 +641,15 @@ $length
 <div class="cell-output cell-output-stdout">
 <pre><code>HTTP/1.1 200 OK
 server: nginx
-date: Thu, 16 Feb 2023 21:36:10 GMT
+date: Thu, 16 Feb 2023 21:45:46 GMT
 content-type: application/json
 vary: Accept-Encoding
 cache-control: no-cache, private
 x-ratelimit-limit: 100
 x-ratelimit-remaining: 98
 access-control-allow-origin: *
-set-cookie: XSRF-TOKEN=eyJpdiI6IktXMURiVjJOUG1UOVplZ3NWWG9CQXc9PSIsInZhbHVlIjoieUh0NXByQnRTNEJrU1VEZVM2dkFUZVhFQjJzaysvc0R4NmlZQnB4UW1DV1RQRGkyTG14RVZiMzNNMDAzRGlZa2wzUmZDR3EyeEt2bGNaTFg2cWlMb3l1UHRvOXVvUUFHdUFtVDVDWmp1a1FUaDFHOGp3UkVBdnFWcUhlRkhoUHIiLCJtYWMiOiJlY2M3NGUzYTBkMGFiYzQ1ZTMyZTFjMGZlNWUyMmMyNWYzNWEwZTZiYmU3YjY1ZDg0OTUzMjU4YjU2MjIyOTJjIiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:36:10 GMT; path=/; samesite=lax
-set-cookie: catfacts_session=eyJpdiI6IjhWQVloakxnVVNJNEtHM2NMUVZWWmc9PSIsInZhbHVlIjoibVNrUjZONmpNZzFvY05xL3NrQ0k3UXRiNGI2Z1RpZU5xclZrZkg3eDFEcTluRUhGQjRSK3N1SnlDMGJENnkwKzZMcTdvcVBuQjhGaGdueFpObDI3dUtEbVZJMXRHMGNvT3BqVWF6SVNZNDgzQmt2L3ljbkZOUkE2YTE0U1ZnRWMiLCJtYWMiOiIxM2MwMGViOWExYWEyYzMyMWRmM2ExMDllOWRmOTdiMDdmYzdlNmRkOTNlNzMwMWY1NDJhNjc0ZTdiOTgwODQ0IiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:36:10 GMT; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IkhsZGRuVnZBcUp3K2hOclVFclEwZHc9PSIsInZhbHVlIjoiNDlMb3g1dlhLT2tNMFpiYUQwLzJ1V0ZYOEpicHpIdUdQc09yQ09kTndJTkErRUlwSGo2VktoaklrTjJ5S2p2ckt1QmFwUE9EZGVUbnpoZXFmSFRyY2xwT2oyVHFmT255YStrSFdvT1ZJNUxYNHlFK2l2cUI1a1JSd1RWL0RmdC8iLCJtYWMiOiIwYWVlMzkyZmM5NDA2NjNjMDU1ZWUzZTZiNzhjMTkwMzcxODdkZDgzZDIwN2NkODgyYzVlOTAxNDcxYWQwYzExIiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:45:46 GMT; path=/; samesite=lax
+set-cookie: catfacts_session=eyJpdiI6InRmWWo2NVVNbk5XOURwYWJEWGl6NWc9PSIsInZhbHVlIjoiZ2tHUUlaREFXQjBLWTlYV09Lb1BBNVhXNXhiT3k0V25oZGVkbHFZV0NsTzkxbHgxSFhMQmRkRm11ZXptQjY3MElxVmhBR0djZEJmRm1hQTNGOU84NEIzMlg5dXQ1NG1aNVl0ODE3UnlDeXI3RWRYRzhXU3craVZWV29wWERlSUMiLCJtYWMiOiI1ZWQ5M2UyMmI5MjIwZDU4YzcxNzRkNDZmZTA5Y2RjMTg5YjgyNzAwMmY2M2Q5NGJiNmQyNjM3ODNlN2UzYjg4IiwidGFnIjoiIn0%3D; expires=Thu, 16-Feb-2023 23:45:46 GMT; path=/; httponly; samesite=lax
 x-frame-options: SAMEORIGIN
 x-xss-protection: 1; mode=block
 x-content-type-options: nosniff
@@ -861,6 +861,42 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">JC Medical Center</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04969</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71539</td>
+<td style="text-align: left;">JC110</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">7 St &amp; Monroe St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03798</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">7478be11-37d8-49b1-a253-f0810045f6ff</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">7478be11-37d8-49b1-a253-f0810045f6ff</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4534</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74641</td>
+<td style="text-align: left;">HB304</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">11 St &amp; Washington St</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.02715</td>
@@ -879,38 +915,74 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">City Hall - Washington St &amp; 1 St</td>
+<td style="text-align: left;">Jersey &amp; 3rd</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03097</td>
+<td style="text-align: right;">-74.04595</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">537a2f47-26a3-4776-ba9d-e2acd2ffbee1</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">537a2f47-26a3-4776-ba9d-e2acd2ffbee1</td>
+<td style="text-align: left;">66ddda59-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddda59-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4654</td>
+<td style="text-align: left;">3272</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
+<td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73736</td>
-<td style="text-align: left;">HB105</td>
+<td style="text-align: right;">40.72333</td>
+<td style="text-align: left;">JC074</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">7 St &amp; Monroe St</td>
+<td style="text-align: left;">Montgomery St</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03798</td>
+<td style="text-align: right;">-74.05099</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">7478be11-37d8-49b1-a253-f0810045f6ff</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">7478be11-37d8-49b1-a253-f0810045f6ff</td>
+<td style="text-align: left;">6107e75a-2493-4e3d-a3e0-d4886d3416e5</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">6107e75a-2493-4e3d-a3e0-d4886d3416e5</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4534</td>
+<td style="text-align: left;">3483</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71942</td>
+<td style="text-align: left;">JC099</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">9 St HBLR - Jackson St &amp; 8 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03841</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">681a8bdb-65ff-4078-a5de-74927502da4e</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">681a8bdb-65ff-4078-a5de-74927502da4e</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4535</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">311</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74641</td>
-<td style="text-align: left;">HB304</td>
+<td style="text-align: right;">40.74791</td>
+<td style="text-align: left;">HB305</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">4 St &amp; Grand St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03511</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">3d1db3fa-1df5-46c8-baf3-619b729f5bda</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">3d1db3fa-1df5-46c8-baf3-619b729f5bda</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4532</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74226</td>
+<td style="text-align: left;">HB301</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -929,6 +1001,42 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.75092</td>
 <td style="text-align: left;">HB507</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Essex Light Rail</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03649</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd8479-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd8479-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3214</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71277</td>
+<td style="text-align: left;">JC038</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">City Hall</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04385</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd5960-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd5960-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3185</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71773</td>
+<td style="text-align: left;">JC003</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -969,110 +1077,38 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">City Hall</td>
+<td style="text-align: left;">Newport PATH</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04385</td>
+<td style="text-align: right;">-74.03376</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd5960-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd5960-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3185</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71773</td>
-<td style="text-align: left;">JC003</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Essex Light Rail</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03649</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd8479-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd8479-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3214</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71277</td>
-<td style="text-align: left;">JC038</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">14 St Ferry - 14 St &amp; Shipyard Ln</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.02435</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">4a48175b-c239-4d5e-b1b8-03eda4239678</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: left;">4a48175b-c239-4d5e-b1b8-03eda4239678</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4537</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.75296</td>
-<td style="text-align: left;">HB202</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Jersey &amp; 3rd</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04595</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddda59-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddda59-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3272</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72333</td>
-<td style="text-align: left;">JC074</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">4 St &amp; Grand St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03511</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">3d1db3fa-1df5-46c8-baf3-619b729f5bda</td>
+<td style="text-align: left;">66dd6721-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: left;">3d1db3fa-1df5-46c8-baf3-619b729f5bda</td>
+<td style="text-align: left;">66dd6721-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4532</td>
+<td style="text-align: left;">3202</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
+<td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74226</td>
-<td style="text-align: left;">HB301</td>
+<td style="text-align: right;">40.72722</td>
+<td style="text-align: left;">JC066</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Montgomery St</td>
+<td style="text-align: left;">City Hall - Washington St &amp; 1 St</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05099</td>
+<td style="text-align: right;">-74.03097</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">6107e75a-2493-4e3d-a3e0-d4886d3416e5</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">6107e75a-2493-4e3d-a3e0-d4886d3416e5</td>
+<td style="text-align: left;">537a2f47-26a3-4776-ba9d-e2acd2ffbee1</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">537a2f47-26a3-4776-ba9d-e2acd2ffbee1</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3483</td>
+<td style="text-align: left;">4654</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
+<td style="text-align: left;">311</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71942</td>
-<td style="text-align: left;">JC099</td>
+<td style="text-align: right;">40.73736</td>
+<td style="text-align: left;">HB105</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -1095,56 +1131,56 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">JC Medical Center</td>
+<td style="text-align: left;">14 St Ferry - 14 St &amp; Shipyard Ln</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04969</td>
+<td style="text-align: right;">-74.02435</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
+<td style="text-align: left;">4a48175b-c239-4d5e-b1b8-03eda4239678</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: left;">4a48175b-c239-4d5e-b1b8-03eda4239678</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">e163ce54-4c39-43c5-9831-e10a2603527d</td>
+<td style="text-align: left;">4537</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
+<td style="text-align: left;">311</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71539</td>
-<td style="text-align: left;">JC110</td>
+<td style="text-align: right;">40.75296</td>
+<td style="text-align: left;">HB202</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">9 St HBLR - Jackson St &amp; 8 St</td>
+<td style="text-align: left;">Marin Light Rail</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03841</td>
+<td style="text-align: right;">-74.04282</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">681a8bdb-65ff-4078-a5de-74927502da4e</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">681a8bdb-65ff-4078-a5de-74927502da4e</td>
+<td style="text-align: left;">66dddc98-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">66dddc98-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4535</td>
+<td style="text-align: left;">3276</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
+<td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74791</td>
-<td style="text-align: left;">HB305</td>
+<td style="text-align: right;">40.71458</td>
+<td style="text-align: left;">JC013</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Newport PATH</td>
+<td style="text-align: left;">Glenwood Ave</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03376</td>
+<td style="text-align: right;">-74.07106</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd6721-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">915057d4-edbc-4c73-8d81-dda33d600d58</td>
 <td style="text-align: right;">18</td>
-<td style="text-align: left;">66dd6721-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">915057d4-edbc-4c73-8d81-dda33d600d58</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3202</td>
+<td style="text-align: left;">3677</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72722</td>
-<td style="text-align: left;">JC066</td>
+<td style="text-align: right;">40.72755</td>
+<td style="text-align: left;">JC094</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -1203,20 +1239,20 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Christ Hospital</td>
+<td style="text-align: left;">Manila &amp; 1st</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05044</td>
+<td style="text-align: right;">-74.04288</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd836d-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd836d-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">66dddae7-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">66dddae7-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3212</td>
+<td style="text-align: left;">3273</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73479</td>
-<td style="text-align: left;">JC034</td>
+<td style="text-align: right;">40.72165</td>
+<td style="text-align: left;">JC082</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -1293,6 +1329,24 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Baldwin at Montgomery</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.06419</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd9183-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66dd9183-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3225</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72366</td>
+<td style="text-align: left;">JC020</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Hoboken Terminal - River St &amp; Hudson Pl</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.02913</td>
@@ -1307,6 +1361,24 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.73607</td>
 <td style="text-align: left;">HB102</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Washington St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03548</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">f841ae52-0bbb-49db-b6eb-f898fbce6108</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">f841ae52-0bbb-49db-b6eb-f898fbce6108</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3638</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72429</td>
+<td style="text-align: left;">JC098</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -1329,78 +1401,6 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Mama Johnson Field - 4 St &amp; Jackson St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04004</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">ded4386f-9f69-43c6-a566-4511920c3e39</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">ded4386f-9f69-43c6-a566-4511920c3e39</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4520</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74314</td>
-<td style="text-align: left;">HB404</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Washington St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03548</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">f841ae52-0bbb-49db-b6eb-f898fbce6108</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">f841ae52-0bbb-49db-b6eb-f898fbce6108</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3638</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72429</td>
-<td style="text-align: left;">JC098</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Church Sq Park - 5 St &amp; Park Ave</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03223</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">43318169-d1ae-4a1a-9578-23cfa3fdbac9</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: left;">43318169-d1ae-4a1a-9578-23cfa3fdbac9</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4523</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74266</td>
-<td style="text-align: left;">HB601</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Baldwin at Montgomery</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.06419</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd9183-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66dd9183-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3225</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72366</td>
-<td style="text-align: left;">JC020</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Madison St &amp; 1 St</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.03930</td>
@@ -1419,40 +1419,22 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Marin Light Rail</td>
+<td style="text-align: left;">Church Sq Park - 5 St &amp; Park Ave</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04282</td>
+<td style="text-align: right;">-74.03223</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dddc98-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: left;">66dddc98-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">43318169-d1ae-4a1a-9578-23cfa3fdbac9</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">43318169-d1ae-4a1a-9578-23cfa3fdbac9</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3276</td>
+<td style="text-align: left;">4523</td>
 <td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
+<td style="text-align: left;">311</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71458</td>
-<td style="text-align: left;">JC013</td>
+<td style="text-align: right;">40.74266</td>
+<td style="text-align: left;">HB601</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Manila &amp; 1st</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04288</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dddae7-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">66dddae7-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3273</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72165</td>
-<td style="text-align: left;">JC082</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Pershing Field</td>
@@ -1470,23 +1452,41 @@ content-encoding: gzip
 <td style="text-align: right;">40.74268</td>
 <td style="text-align: left;">JC024</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Glenwood Ave</td>
+<td style="text-align: left;">Christ Hospital</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.07106</td>
+<td style="text-align: right;">-74.05044</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">915057d4-edbc-4c73-8d81-dda33d600d58</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">915057d4-edbc-4c73-8d81-dda33d600d58</td>
+<td style="text-align: left;">66dd836d-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd836d-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3677</td>
+<td style="text-align: left;">3212</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72755</td>
-<td style="text-align: left;">JC094</td>
+<td style="text-align: right;">40.73479</td>
+<td style="text-align: left;">JC034</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Mama Johnson Field - 4 St &amp; Jackson St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04004</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">ded4386f-9f69-43c6-a566-4511920c3e39</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">ded4386f-9f69-43c6-a566-4511920c3e39</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4520</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74314</td>
+<td style="text-align: left;">HB404</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -1509,76 +1509,58 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Grove St PATH</td>
+<td style="text-align: left;">Southwest Park - Jackson St &amp; Observer Hwy</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04309</td>
+<td style="text-align: right;">-74.04166</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
+<td style="text-align: left;">5f798c51-5d8b-4add-9f81-341f54a82ffa</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">5f798c51-5d8b-4add-9f81-341f54a82ffa</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
-<td style="text-align: left;">59 , 61 , Valet Service , 2290031f-e7d8-40a3-9ad6-566df493bbbc, ATTENDED_SERVICE , UNLIMITED , UNLIMITED ,</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71941</td>
-<td style="text-align: left;">JC115</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Paulus Hook</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03355</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd58f2-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66dd58f2-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3184</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71415</td>
-<td style="text-align: left;">JC002</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Grant Ave &amp; MLK Dr</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.08084</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">ccfa1f8f-f930-45f2-9cda-375c01596ca2</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">ccfa1f8f-f930-45f2-9cda-375c01596ca2</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4633</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.70920</td>
-<td style="text-align: left;">JC107</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Grand St &amp; 14 St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03160</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">823c0615-2832-4e76-85f0-7cf527151aba</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: left;">823c0615-2832-4e76-85f0-7cf527151aba</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4525</td>
+<td style="text-align: left;">4526</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">311</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.75409</td>
-<td style="text-align: left;">HB506</td>
+<td style="text-align: right;">40.73755</td>
+<td style="text-align: left;">HB401</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Heights Elevator</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04044</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd63de-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">66dd63de-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3198</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74872</td>
+<td style="text-align: left;">JC059</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Journal Square</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.06250</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">dd8b2f53-8b94-4082-9576-994a4962f9d5</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">dd8b2f53-8b94-4082-9576-994a4962f9d5</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3640</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.73367</td>
+<td style="text-align: left;">JC103</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">York St &amp; Marin Blvd</td>
@@ -1596,25 +1578,97 @@ content-encoding: gzip
 <td style="text-align: right;">40.71661</td>
 <td style="text-align: left;">JC097</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Bergen Ave &amp; Stegman St</td>
+<td style="text-align: left;">Paulus Hook</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.08670</td>
+<td style="text-align: right;">-74.03355</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">33a797e8-6be2-4868-b9f6-1be157eaa0a5</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: left;">33a797e8-6be2-4868-b9f6-1be157eaa0a5</td>
+<td style="text-align: left;">66dd58f2-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66dd58f2-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4619</td>
+<td style="text-align: left;">3184</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.70658</td>
-<td style="text-align: left;">JC108</td>
+<td style="text-align: right;">40.71415</td>
+<td style="text-align: left;">JC002</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Grant Ave &amp; MLK Dr</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.08084</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">ccfa1f8f-f930-45f2-9cda-375c01596ca2</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">ccfa1f8f-f930-45f2-9cda-375c01596ca2</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4633</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.70920</td>
+<td style="text-align: left;">JC107</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Grand St &amp; 14 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03160</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">823c0615-2832-4e76-85f0-7cf527151aba</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">823c0615-2832-4e76-85f0-7cf527151aba</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4525</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.75409</td>
+<td style="text-align: left;">HB506</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Grove St PATH</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04309</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">2290031f-e7d8-40a3-9ad6-566df493bbbc</td>
+<td style="text-align: left;">59 , 61 , Valet Service , 2290031f-e7d8-40a3-9ad6-566df493bbbc, ATTENDED_SERVICE , UNLIMITED , UNLIMITED ,</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71941</td>
+<td style="text-align: left;">JC115</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Columbus Park - Clinton St &amp; 9 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03245</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">fadf00cf-d84a-49e8-9607-c67154915412</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">fadf00cf-d84a-49e8-9607-c67154915412</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4524</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74816</td>
+<td style="text-align: left;">HB501</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Oakland Ave</td>
@@ -1631,6 +1685,24 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.73760</td>
 <td style="text-align: left;">JC022</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Bergen Ave &amp; Stegman St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.08670</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">33a797e8-6be2-4868-b9f6-1be157eaa0a5</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">33a797e8-6be2-4868-b9f6-1be157eaa0a5</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4619</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.70658</td>
+<td style="text-align: left;">JC108</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -1653,6 +1725,42 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Willow Ave &amp; 12 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03038</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">655b0878-c22b-4f8c-8675-21bf30d1eebf</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">655b0878-c22b-4f8c-8675-21bf30d1eebf</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4539</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.75187</td>
+<td style="text-align: left;">HB505</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Morris Canal</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03853</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66ddd78e-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddd78e-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3267</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71242</td>
+<td style="text-align: left;">JC072</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Clinton St &amp; Newark St</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.03571</td>
@@ -1671,24 +1779,6 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Riverview Park</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04399</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd630c-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">66dd630c-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3196</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74432</td>
-<td style="text-align: left;">JC057</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Jackson Square</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.07890</td>
@@ -1703,6 +1793,24 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.71113</td>
 <td style="text-align: left;">JC063</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Riverview Park</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04399</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd630c-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">66dd630c-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3196</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74432</td>
+<td style="text-align: left;">JC057</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -1743,114 +1851,6 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Willow Ave &amp; 12 St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03038</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">655b0878-c22b-4f8c-8675-21bf30d1eebf</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">655b0878-c22b-4f8c-8675-21bf30d1eebf</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4539</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.75187</td>
-<td style="text-align: left;">HB505</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Journal Square</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.06250</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">dd8b2f53-8b94-4082-9576-994a4962f9d5</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">dd8b2f53-8b94-4082-9576-994a4962f9d5</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3640</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73367</td>
-<td style="text-align: left;">JC103</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Heights Elevator</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04044</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd63de-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">66dd63de-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3198</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74872</td>
-<td style="text-align: left;">JC059</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Columbus Park - Clinton St &amp; 9 St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03245</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">fadf00cf-d84a-49e8-9607-c67154915412</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: left;">fadf00cf-d84a-49e8-9607-c67154915412</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4524</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74816</td>
-<td style="text-align: left;">HB501</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Morris Canal</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03853</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddd78e-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddd78e-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3267</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71242</td>
-<td style="text-align: left;">JC072</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Southwest Park - Jackson St &amp; Observer Hwy</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04166</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">5f798c51-5d8b-4add-9f81-341f54a82ffa</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: left;">5f798c51-5d8b-4add-9f81-341f54a82ffa</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4526</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73755</td>
-<td style="text-align: left;">HB401</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">McGinley Square</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.06762</td>
@@ -1865,150 +1865,6 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.72534</td>
 <td style="text-align: left;">JC055</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">5 Corners Library</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05950</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd8b48-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">66dd8b48-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3220</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73496</td>
-<td style="text-align: left;">JC018</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Newark Ave</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04630</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd80ac-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd80ac-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3211</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72153</td>
-<td style="text-align: left;">JC032</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Lafayette Park</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.06286</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddd81a-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddd81a-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3268</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71346</td>
-<td style="text-align: left;">JC078</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Stevens - River Ter &amp; 6 St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.02699</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">4aecd6f2-8a84-4bed-a528-dc6870877292</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: left;">4aecd6f2-8a84-4bed-a528-dc6870877292</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4587</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74313</td>
-<td style="text-align: left;">HB602</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Brunswick St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05066</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd7fe2-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd7fe2-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3209</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72418</td>
-<td style="text-align: left;">JC023</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Leonard Gordon Park</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05727</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dddf5f-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66dddf5f-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3281</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.74591</td>
-<td style="text-align: left;">JC080</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Hamilton Park</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04425</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd7b37-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: left;">66dd7b37-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3203</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72760</td>
-<td style="text-align: left;">JC009</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Adams St &amp; 2 St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03690</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">3371df76-39db-43ab-b3d6-fac0be55311f</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">3371df76-39db-43ab-b3d6-fac0be55311f</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4653</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73981</td>
-<td style="text-align: left;">HB407</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -2031,6 +1887,150 @@ content-encoding: gzip
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Lafayette Park</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.06286</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66ddd81a-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddd81a-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3268</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71346</td>
+<td style="text-align: left;">JC078</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Stevens - River Ter &amp; 6 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.02699</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">4aecd6f2-8a84-4bed-a528-dc6870877292</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">4aecd6f2-8a84-4bed-a528-dc6870877292</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4587</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74313</td>
+<td style="text-align: left;">HB602</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">5 Corners Library</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.05950</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd8b48-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">66dd8b48-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3220</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.73496</td>
+<td style="text-align: left;">JC018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Brunswick St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.05066</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd7fe2-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd7fe2-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3209</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72418</td>
+<td style="text-align: left;">JC023</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Newark Ave</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04630</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd80ac-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd80ac-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3211</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72153</td>
+<td style="text-align: left;">JC032</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Hamilton Park</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04425</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd7b37-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">66dd7b37-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3203</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72760</td>
+<td style="text-align: left;">JC009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Leonard Gordon Park</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.05727</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dddf5f-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66dddf5f-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3281</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.74591</td>
+<td style="text-align: left;">JC080</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Adams St &amp; 2 St</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03690</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">3371df76-39db-43ab-b3d6-fac0be55311f</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">3371df76-39db-43ab-b3d6-fac0be55311f</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4653</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.73981</td>
+<td style="text-align: left;">HB407</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Fairmount Ave</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.07196</td>
@@ -2049,6 +2049,24 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Liberty Light Rail</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.05570</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dd5f24-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd5f24-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3192</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71124</td>
+<td style="text-align: left;">JC052</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Hoboken Ave at Monmouth St</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.04696</td>
@@ -2063,6 +2081,96 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.73521</td>
 <td style="text-align: left;">JC105</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">12 St &amp; Sinatra Dr N</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.02402</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">bd6f422b-d7ae-4d7e-9261-653fdd8e6888</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">bd6f422b-d7ae-4d7e-9261-653fdd8e6888</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4649</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.75060</td>
+<td style="text-align: left;">HB201</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Brunswick &amp; 6th</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.05039</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66ddd8a8-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddd8a8-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3269</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72601</td>
+<td style="text-align: left;">JC081</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Monmouth and 6th</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.04879</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66ddddb4-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddddb4-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3278</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.72569</td>
+<td style="text-align: left;">JC075</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Columbus Drive</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03891</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">66dddc08-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66dddc08-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">3275</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.71836</td>
+<td style="text-align: left;">JC014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
+<td style="text-align: left;">Hoboken Terminal - Hudson St &amp; Hudson Pl</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">-74.03030</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">cbc48689-7805-49dd-9669-5471f4b7b6fb</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">cbc48689-7805-49dd-9669-5471f4b7b6fb</td>
+<td style="text-align: left;">KEY , CREDITCARD</td>
+<td style="text-align: left;">4536</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">311</td>
+<td style="text-align: left;">classic</td>
+<td style="text-align: right;">40.73594</td>
+<td style="text-align: left;">HB101</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -2121,96 +2229,6 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Hoboken Terminal - Hudson St &amp; Hudson Pl</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03030</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">cbc48689-7805-49dd-9669-5471f4b7b6fb</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: left;">cbc48689-7805-49dd-9669-5471f4b7b6fb</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4536</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.73594</td>
-<td style="text-align: left;">HB101</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Columbus Drive</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03891</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dddc08-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66dddc08-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3275</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71836</td>
-<td style="text-align: left;">JC014</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">12 St &amp; Sinatra Dr N</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.02402</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">bd6f422b-d7ae-4d7e-9261-653fdd8e6888</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: left;">bd6f422b-d7ae-4d7e-9261-653fdd8e6888</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">4649</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">311</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.75060</td>
-<td style="text-align: left;">HB201</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Brunswick &amp; 6th</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05039</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddd8a8-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddd8a8-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3269</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72601</td>
-<td style="text-align: left;">JC081</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Jersey &amp; 6th St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04557</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddd93e-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddd93e-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3270</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72529</td>
-<td style="text-align: left;">JC027</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
 <td style="text-align: left;">Bergen Ave &amp; Sip Ave</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">-74.06444</td>
@@ -2225,24 +2243,6 @@ content-encoding: gzip
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.73101</td>
 <td style="text-align: left;">JC109</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Warren St</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.03805</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd5a42-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd5a42-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3187</td>
-<td style="text-align: left;">NULL</td>
-<td style="text-align: left;">70</td>
-<td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72112</td>
-<td style="text-align: left;">JC006</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
@@ -2265,38 +2265,38 @@ content-encoding: gzip
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Monmouth and 6th</td>
+<td style="text-align: left;">Warren St</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.04879</td>
+<td style="text-align: right;">-74.03805</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66ddddb4-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">66ddddb4-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">66dd5a42-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">66dd5a42-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3278</td>
+<td style="text-align: left;">3187</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.72569</td>
-<td style="text-align: left;">JC075</td>
+<td style="text-align: right;">40.72112</td>
+<td style="text-align: left;">JC006</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: left;">https://bkn.lft.to/lastmile_qr_scan</td>
-<td style="text-align: left;">Liberty Light Rail</td>
+<td style="text-align: left;">Jersey &amp; 6th St</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">-74.05570</td>
+<td style="text-align: right;">-74.04557</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">66dd5f24-0aca-11e7-82f6-3863bb44ef7c</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">66dd5f24-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: left;">66ddd93e-0aca-11e7-82f6-3863bb44ef7c</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">66ddd93e-0aca-11e7-82f6-3863bb44ef7c</td>
 <td style="text-align: left;">KEY , CREDITCARD</td>
-<td style="text-align: left;">3192</td>
+<td style="text-align: left;">3270</td>
 <td style="text-align: left;">NULL</td>
 <td style="text-align: left;">70</td>
 <td style="text-align: left;">classic</td>
-<td style="text-align: right;">40.71124</td>
-<td style="text-align: left;">JC052</td>
+<td style="text-align: right;">40.72529</td>
+<td style="text-align: left;">JC027</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRUE</td>
@@ -8376,7 +8376,7 @@ content-encoding: gzip
 <td style="text-align: left;">3141</td>
 <td style="text-align: left;">CREDITCARD, KEY</td>
 <td style="text-align: left;">3141</td>
-<td style="text-align: left;">37 , 75 , Valet Service , 66dd42eb-0aca-11e7-82f6-3863bb44ef7c, ATTENDED_SERVICE , UNLIMITED , , UNLIMITED , ,</td>
+<td style="text-align: left;">34 , 78 , Valet Service , 66dd42eb-0aca-11e7-82f6-3863bb44ef7c, ATTENDED_SERVICE , UNLIMITED , , UNLIMITED , ,</td>
 <td style="text-align: left;">71</td>
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.76501</td>
@@ -14262,7 +14262,7 @@ content-encoding: gzip
 <td style="text-align: left;">3664</td>
 <td style="text-align: left;">CREDITCARD, KEY</td>
 <td style="text-align: left;">3664</td>
-<td style="text-align: left;">265 , -145 , Valet Service , c1e24edf-7192-433f-8d38-be5b6b3647c5, ATTENDED_SERVICE , UNLIMITED , , NONE , ,</td>
+<td style="text-align: left;">261 , -141 , Valet Service , c1e24edf-7192-433f-8d38-be5b6b3647c5, ATTENDED_SERVICE , UNLIMITED , , NONE , ,</td>
 <td style="text-align: left;">71</td>
 <td style="text-align: left;">classic</td>
 <td style="text-align: right;">40.72020</td>
@@ -34860,8 +34860,8 @@ content-encoding: gzip
 <span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">74.0060</span>, <span class="at">lat=</span>   <span class="fl">40.7128</span>, <span class="at">zoom=</span><span class="dv">12</span>) <span class="sc">|&gt;</span></span>
 <span id="cb29-8"><a href="#cb29-8"></a>  <span class="fu">addCircles</span>(<span class="at">lat =</span> <span class="sc">~</span>lat, <span class="at">lng =</span> <span class="sc">~</span>lon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-5cf2c19bd6071ee1298a" style="width:960px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5cf2c19bd6071ee1298a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[40.7499849090714,40.73736,40.7464126483772,40.750915534785,40.75453,40.7182113,40.7177325,40.7127742,40.752960630465,40.7233315864644,40.7422579775645,40.71942,40.7192517,40.71539114317,40.747907209689,40.7272235,40.74542,40.737711,40.7311689,40.734785818,40.719282200707,40.7369822181872,40.7216301426384,40.722103786686,40.7360676564825,40.7151776773203,40.7431399396563,40.7242941,40.7426593327314,40.7236589,40.73879,40.7145840353589,40.72165072488,40.742677141,40.7275514673001,40.71848892,40.71941,40.7141454,40.7091983224544,40.75409,40.7166150008305,40.7065754506345,40.7376037,40.7246050998869,40.73743,40.7443187,40.71113,40.7499432541225,40.7409726086436,40.7518674823282,40.73367,40.7487159453802,40.7481612106515,40.7124188237569,40.737551272458,40.7253399253558,40.7349610200095,40.72152515,40.7134638266919,40.7431328271055,40.7241765,40.7459099663156,40.727595966,40.7398137231184,40.7287448,40.7257261374256,40.7352083804536,40.740802,40.7143583687043,40.7443978330956,40.7359375844633,40.7183551982321,40.750604142369,40.7260117296463,40.7252891078113,40.7310088869873,40.7211236,40.7459838829156,40.725685483629,40.7112423,40.76727216,40.71911552,40.71117416,40.68382604,40.74177603,40.69608941,40.68676793,40.73172428,40.72710258,40.69239502,40.69839895,40.71625008,40.7208736,40.722103786686,40.71473993,40.752062307,40.69089272,40.72917025,40.75323098,40.73971301,40.7381765,40.70905623,40.74334935,40.70037867,40.70277159,40.73781509,40.71146364,40.7546011026,40.72743423,40.69597683,40.7284186,40.7361967,40.69196566,40.68981035,40.697787,40.69196035,40.69327018,40.73535398,40.72185379,40.71870987,40.72456089,40.72317958,40.73226398,40.73532427,40.71939226,40.68940747,40.70122128,40.70365182,40.69474881,40.6917823,40.70706456,40.72229346,40.72368361,40.75097711,40.71910537,40.69308257,40.68650065,40.69766564,40.7643971,40.7390169121,40.73454567,40.6845683,40.713126,40.7302066052995,40.73049393,40.71406667,40.734232,40.68683208,40.72217444,40.72082834,40.72362738,40.70463334,40.76095756,40.71427487,40.71307916,40.7172274,40.722055,40.69610226,40.70355377,40.7096008936354,40.72453734,40.711066,40.717571,40.69991755,40.69236178,40.689888,40.73624527,40.72953837,40.7153379,40.72405549,40.71450451,40.71173107,40.71219906,40.74238787,40.72903917,40.73047747,40.72580614,40.71269042,40.71782143,40.71739973,40.69794,40.6851443,40.73652889,40.728846,40.71850211,40.71559509,40.76340613,40.68539567,40.69363137,40.71602118,40.71622644,40.73291553,40.75510267,40.70717936,40.71605866,40.75172632,40.70834698,40.68900443,40.693261,40.75828065,40.73038599,40.73224119,40.694546087246,40.69331716,40.70862144,40.72243797,40.749156,40.73401143,40.735238,40.75797322,40.71494807,40.71273266,40.749717753,40.69221589,40.69760127,40.695065,40.72299208,40.72521311,40.680342423,40.68415748,40.69165183,40.68851534,40.71926081,40.72019576,40.72502876,40.739323,40.69512845,40.71076228,40.72066442,40.72228087,40.7158155,40.7047177,40.68753406,40.71291224,40.70224,40.69580705,40.68764484,40.69573398,40.770513,40.76584941,40.71754834,40.701907,40.72467721,40.72621788,40.74317449,40.74173969,40.68216564,40.6809833854,40.72779126,40.7262807,40.75255434,40.746647,40.70853074,40.72740794,40.74487634,40.76370739,40.75660359,40.76227205,40.74475148,40.75455731,40.75001986,40.7597108,40.76695317,40.751396,40.71285887,40.73587678,40.74691959,40.75934501,40.75513557,40.74395411,40.7652654,40.76344058,40.74345335,40.71286844,40.7457121,40.72110063,40.7451677,40.74394314,40.75640548,40.76030096,40.76019252,40.76669671,40.71260486,40.73935542,40.73223272,40.75500254,40.75038009,40.7462009,40.75066386,40.751551,40.74734825,40.76269882,40.73726186,40.73704984,40.76228826,40.744219,40.714211,40.73827428,40.73221853,40.74901271,40.73912601,40.76341379,40.7454973,40.7606597,40.72938685,40.7500727,40.768254,40.76087502,40.76009437,40.75206862,40.75714758,40.75594159,40.74765947,40.74290902,40.7575699,40.7714967105444,40.71893904,40.710451,40.74144387,40.74025878,40.71534825,40.7431155537649,40.736502,40.74444921,40.716887,40.7338121919663,40.76590936,40.70569254,40.71117444,40.7217000523561,40.739445,40.75022392,40.75929124,40.759107,40.7203677529846,40.67890679,40.6794268,40.6814598,40.6800105,40.682601,40.6823687,40.68402,40.68488,40.6851532,40.686312,40.6900815,40.6894932,40.6883337,40.69072549,40.69128258,40.69237074,40.6933982,40.69425403,40.69622937,40.69539817,40.69527008,40.69681963,40.70029511,40.69957608,40.7016657,40.7031724,40.70411791,40.70510918,40.70538077,40.70583339,40.70767788,40.70708701,40.70870368,40.70877084,40.7092482627616,40.70934,40.711863,40.71167351,40.71247661,40.71469,40.715143,40.71413311,40.7160751,40.7190095,40.71745169,40.7169811,40.71929301,40.71924,40.7248125644002,40.72079821,40.72179134,40.724055,40.72325,40.72311651,40.72557,40.72606,40.72708584,40.72906,40.73026,40.73232194,40.73266,40.73564,40.73555,40.74232744,40.74524768,40.7443632870669,40.74469738,40.74731,40.74708586,40.74718234,40.74966,40.75052534,40.75110165,40.75325964,40.7671284034954,40.76350532,40.76312584,40.77112927,40.766368,40.77282817,40.7711828754066,40.77140426,40.76500525,40.7612274,40.7763214218227,40.77677702,40.77862688,40.77573034,40.77801203,40.77565541,40.7728384,40.76873687,40.77314236,40.76663814,40.77518615,40.77163851,40.77492513,40.77896784,40.7801839724239,40.7734066,40.7770575,40.7757937668367,40.7805779901033,40.7796680900731,40.78720869,40.78499979,40.78524672,40.7785669,40.777507027548,40.77748046,40.7867947,40.78414472,40.698617,40.743,40.78275,40.7678008014813,40.7572456791173,40.7589848139963,40.7739139023812,40.686203,40.7589238637769,40.7314372408523,40.6942715,40.6803560840434,40.6923166071919,40.7505853470215,40.7277140777778,40.7270636334831,40.7295149622495,40.7882213,40.78141070019,40.78839,40.7806284,40.789622,40.778301,40.7901794809508,40.7779453,40.7857851,40.7921,40.7835016,40.7824541752799,40.6686627,40.686371,40.78813,40.6651468153379,40.7919557,40.7969347,40.6849894,40.668127,40.7811527642792,40.6662078,40.7941654,40.6861758,40.7859201,40.663779,40.68763155,40.7817212,40.6663181,40.7937704,40.6847514,40.6686273,40.7839636,40.666287,40.6831164,40.668603,40.7981856,40.6685455,40.7849032,40.67434,40.7877214,40.795,40.6829151,40.6725058,40.8013434,40.681990442707,40.6747055,40.6772744,40.787801,40.673635513415,40.7862586,40.6765304,40.6753274,40.6777748,40.7997568,40.679043,40.7894854155321,40.6751468387098,40.6773429,40.677236,40.6729679,40.7973721,40.7869946,40.6726724341095,40.668132,40.7680088930595,40.7746671,40.8008363,40.6711978,40.7691572,40.7829391,40.6740886,40.7781314,40.7904828,40.6751622,40.6703837,40.8021174,40.7922553,40.6728155,40.7724607,40.7727966,40.7689738,40.6750705,40.799484,40.7699426,40.7647185194434,40.6786115,40.773763,40.7903051,40.6777287,40.680611,40.804213,40.6787242,40.6809591,40.7934337,40.6828003,40.6830456,40.7892529,40.6812117,40.6794327,40.6769993,40.6763744,40.6783563,40.6763947,40.6746957,40.6726029815013,40.6902375,40.6705135,40.6704922,40.6704836,40.6790979972168,40.6867443,40.6864442,40.6849668,40.6853761,40.6827549,40.6809447234773,40.6793307,40.6776147,40.6750207,40.6792788,40.6802133,40.6843549,40.6859296,40.6610633719006,40.791976,40.7892105,40.6850680730818,40.7190789117956,40.718822,40.721319,40.7931348098666,40.6924182925785,40.7613298312481,40.7191557169604,40.7133522622288,40.7103685423523,40.7163803197356,40.7630259428052,40.7576322773944,40.7148515052625,40.7511838746328,40.7353670556054,40.7522709383741,40.7249467235942,40.742753828659,40.6570886666848,40.6851255951541,40.796879,40.79747,40.8005385,40.799139,40.797911,40.7945663,40.7923272,40.7949879,40.7974772,40.8006721,40.7989445,40.8014866,40.7954121,40.80295,40.8029263,40.805726,40.8013066,40.8045555,40.809725,40.8011939,40.8078316,40.802535,40.774645,40.7767,40.774591,40.7699176,40.7711528,40.808442,40.804372,40.7987859,40.7701477,40.7729,40.7774552,40.776165,40.7747878,40.7713937,40.8107922,40.7787185,40.8125511,40.78145,40.8114323,40.805159,40.804038,40.8082,40.6809741,40.802692,40.8067581,40.81,40.813358,40.8086249,40.81028506306,40.6804836,40.8120562,40.6791944,40.8143256,40.678045,40.795508,40.805973,40.801694,40.751047,40.75742,40.6794388,40.7576314,40.7531106,40.757186,40.7601853,40.7614376,40.7596276,40.7569332,40.6758324,40.7557327,40.676368,40.756913,40.7580583,40.6769694,40.76108,40.7628138,40.6741806,40.672695,40.6737236,40.6740123,40.6721683,40.6716493,40.6707767,40.6691783,40.7638753,40.6686744,40.7671863,40.7668,40.6679411,40.7659,40.7633589,40.761584,40.760339,40.6642406,40.7577284,40.7595701,40.7611488,40.6627059,40.763154,40.7647,40.6630619,40.7658346,40.74252,40.7682,40.7423737,40.7692475,40.7449067,40.7703743,40.745038,40.768692,40.7656251,40.7671,40.7485,40.7713615,40.7519071,40.7739825,40.80756,40.8109494,40.8025566,40.8094953477795,40.8038654,40.7546232402911,40.6832386546034,40.7428687731211,40.7631548191037,40.6979503156954,40.8143944379158,40.7518695142187,40.7230774906867,40.7435337324616,40.6664393068708,40.7201952143746,40.7239567849954,40.6775920693738,40.7014031725772,40.6758329439129,40.739448201304,40.7432268143217,40.799041392883,40.7133418427591,40.7640893235069,40.6999974843885,40.7224818863822,40.7751595343424,40.7636046779586,40.7437524099784,40.7284005945083,40.741459,40.735445,40.7380461424828,40.7296672939298,40.754691750226,40.7068420310133,40.7181696945421,40.7535992020056,40.7274642069239,40.7675487799971,40.7667405590595,40.7687620293096,40.7433660802702,40.7176619708399,40.6953569332022,40.758397,40.759125,40.752694,40.727243,40.720747,40.719383,40.735918,40.726378,40.7565127298495,40.72431,40.7475739589548,40.6906480708294,40.704508,40.710681,40.702997,40.70538,40.705614,40.697842,40.677027,40.707165,40.705517,40.709897,40.71323,40.71019,40.707174,40.702831,40.706237,40.713811,40.70539,40.704425,40.702013,40.700003,40.699304,40.7027,40.704876,40.703545,40.698568,40.698458,40.70838,40.75492,40.714193,40.69985,40.68186,40.7003,40.71687,40.671907,40.752269,40.74964,40.665816,40.702461,40.752474,40.763189,40.77485,40.734814,40.745686,40.761573,40.755293,40.71429,40.71773,40.72984,40.73396,40.69757,40.70106,40.70076,40.70099,40.6786,40.68139,40.68458,40.68565,40.68652,40.6882,40.68858,40.68663,40.69055,40.69122,40.69467,40.69385,40.69146,40.69329,40.69356,40.69545,40.69811,40.69543,40.69502,40.69905,40.69943,40.70108,40.69676,40.69671,40.69544,40.70636,40.70907,40.71401,40.70869,40.70686,40.716657,40.71882,40.72577,40.72158,40.73124,40.70166,40.70113,40.69714,40.69296,40.68929,40.68906,40.67945,40.693,40.692,40.697481,40.68281,40.6972,40.70068,40.70461,40.6988,40.69922,40.70555,40.69812,40.68822,40.7098,40.818299,40.69517,40.70577,40.69969,40.70413,40.70553,40.71246,40.70793,40.69047,40.698,40.75473,40.6831998817276,40.740983,40.7015734087379,40.70183,40.70863,40.763954,40.72084,40.72226,40.70998,40.70694,40.68989,40.6998714088299,40.732647,40.711444,40.70112,40.70408,40.709697,40.699569,40.783786,40.69178,40.810224,40.805701,40.807466,40.808484,40.810893,40.81014,40.81296,40.813539,40.81093,40.812735,40.814469,40.816576,40.817755,40.816234,40.816355,40.820003,40.805089,40.80262,40.800933,40.800425,40.801657,40.8190344,40.818215,40.819746,40.818477,40.804168,40.805559,40.807408,40.809619,40.808633,40.806896,40.82281,40.808891,40.811112,40.811675,40.812299,40.823498,40.822756,40.820036,40.816827,40.814383,40.814046,40.811314,40.826969,40.814232,40.815887,40.819609,40.822215,40.827212,40.820713,40.819823,40.81899,40.82188,40.829523,40.830476,40.817166,40.817802,40.824013,40.820302,40.81734,40.813135,40.805631,40.808384,40.802554,40.812191,40.806414,40.815484,40.813619,40.8169597103246,40.819783,40.821111,40.820877,40.820681,40.821294,40.814673,40.823168,40.824686,40.827305,40.825244,40.816124,40.827075,40.82831,40.829114,40.82923,40.812346,40.81449,40.817555,40.803399,40.825125,40.813224,40.819241,40.826406,40.826881,40.830663,40.830702,40.816402,40.81989,40.82057,40.831327,40.7639089,40.757284,40.7537022541911,40.7426847348757,40.825289,40.75461,40.77237,40.832081,40.832314,40.833303,40.834468,40.83618,40.835798,40.839278,40.84004,40.839137,40.839443,40.75863,40.842941,40.842173,40.84522,40.844044,40.846052,40.807347437082,40.848467,40.847305,40.847396,40.852252,40.848282,40.849972,40.835775,40.7597380525114,40.838191,40.78476,40.820089,40.823732,40.831444,40.83173,40.833909,40.83649,40.835334,40.839549,40.840536,40.84207,40.843965,40.823429,40.829797,40.830179,40.825716,40.83263,40.834263,40.839312,40.834015,40.826677,40.829608,40.834457,40.818212,40.823162,40.832812,40.837213,40.843264,40.84925,40.7250655101547,40.7427517964899,40.78294,40.79346,40.79558,40.80046,40.830262,40.6640798367816,40.7494985460252,40.74714,40.7924951949511,40.7955895410534,40.7886649912788,40.827883,40.825737,40.839142,40.837576,40.832057,40.831584,40.844075,40.812769,40.815077,40.816343,40.819701,40.824,40.823872,40.82696,40.824796,40.822545,40.818185,40.816126,40.813991,40.816567,40.818743,40.821075,40.821967,40.82895,40.832678,40.830471,40.82394,40.820578,40.827184,40.83545,40.833246,40.830529,40.839586,40.843079,40.84224,40.834124,40.832649,40.836274,40.82809,40.82441,40.84301,40.842675,40.83899,40.828975,40.828199,40.829896,40.825322,40.834857,40.838379,40.837119,40.831762,40.830051,40.832171,40.831998,40.839229,40.836733,40.839335,40.818154,40.83299,40.840683,40.827301,40.826303,40.85168,40.840484,40.83094,40.824811,40.83406,40.844811,40.83999,40.819999,40.824956,40.826706,40.841092,40.811892,40.831305492673,40.822351,40.838706,40.83196,40.82995,40.83171,40.835302,40.7258399679237,40.7400570856729,40.7419815999402,40.7103231,40.7541451926352,40.823061,40.822217,40.6962329712932,40.837037,40.839194,40.840494,40.8358771,40.756951,40.7417235109747,40.7647342000652,40.768333,40.762009,40.757334,40.752643,40.752149,40.821952,40.832164,40.7033668669587,40.8361791367748,40.8187256999012,40.836705668628,40.827629,40.752443,40.753091,40.767666,40.750181,40.754795,40.764496,40.769673,40.774306,40.752372,40.763422,40.755763,40.758057,40.760083,40.762507,40.753441,40.754164,40.754176,40.757525,40.771203,40.769219,40.776745,40.783956,40.785994,40.775415,40.709267,40.756265,40.7334239943708,40.73115,40.7319113232317,40.7641745201977,40.754139,40.765753,40.75574,40.772717,40.774798,40.77813,40.777112,40.772899,40.772092,40.768442,40.77028,40.768728,40.778089,40.73498,40.7278970140902,40.7261560498041,40.747968,40.778557,40.7590579541859,40.7653538038587,40.7596044713879,40.7730150829138,40.838315,40.7727682862883,40.756351,40.7725996921817,40.77977,40.763328,40.761294,40.76072,40.75388,40.755389,40.757357,40.776168,40.780478,40.784003,40.76817,40.770888,40.817245,40.782465,40.7654756924495,40.766824,40.751555,40.8272304996247,40.72769,40.7315393746407,40.723355979608,40.715118719965,40.7177981773783,40.7114713944693,40.7131070230591,40.666197,40.666168,40.660906,40.663493,40.662584,40.66016,40.659053,40.656633,40.65629,40.651654,40.653368,40.650739,40.648005,40.649037,40.651847,40.649681,40.648481,40.658029,40.648055,40.647718,40.643817,40.645074,40.644367,40.643546,40.662611,40.656986,40.657743,40.654098,40.649983,40.650176,40.642809,40.646037,40.642031,40.655278,40.652657,40.652512,40.643371,40.644862,40.646377,40.644512,40.649143,40.645921,40.642703,40.649292,40.642408,40.640831,40.638196,40.639859,40.639978,40.640493,40.635679,40.644743,40.639673,40.641269,40.638246,40.73127,40.71703,40.659490558939,40.654144,40.651354,40.646351,40.64744,40.659555,40.656326,40.655716,40.633385,40.659176,40.647105,40.647379,40.648169,40.651173,40.642622,40.637033,40.7317347858835,40.7327588704509,40.8190058180656,40.659945,40.652563,40.63766,40.6825642575969,40.854788,40.665507,40.651566,40.852538,40.852253,40.856906,40.857994,40.861382,40.867505,40.862562,40.862638,40.863211,40.86788,40.871094,40.6447189576357,40.639421,40.8564873352358,40.857157813919,40.86012,40.862058,40.8589044753841,40.863124,40.867357,40.868846,40.861281970751,40.866141,40.8698986619405,40.8693246564009,40.8730545893709,40.851113,40.859166,40.872412,40.864632,40.672784,40.6817781092876,40.671409,40.726330859717,40.6893952,40.673746,40.6854240099702,40.65482,40.640125,40.657265,40.8408960319304,40.855331,40.660079,40.649145,40.846011,40.845505,40.846465,40.84741,40.848177,40.850121,40.851747,40.848793,40.853686,40.858472,40.87139,40.6870657987591,40.673134,40.848354,40.850036,40.847798,40.853646,40.85501,40.856302,40.855653,40.858498,40.676757,40.851788,40.854947,40.855156,40.853929,40.861669,40.861915,40.658489,40.646475,40.6424313970609,40.85556,40.847746,40.85834,40.86156,40.86295,40.86288,40.86294,40.86659,40.86448,40.86389,40.86767,40.86648,40.86945,40.87444,40.87002,40.86813,40.86814,40.87207,40.849629,40.8496401,40.856987,40.86008,40.87069,40.86557,40.87387,40.87307,40.87142,40.87382,40.87812,40.87656,40.87935,40.88226,40.846879,40.85322,40.7029693415527,40.702709,40.700119,40.693534,40.690065,40.6940096486599,40.698477,40.87156,40.8704956,40.850535,40.7007630832615,40.86571,40.860814,40.861748,40.86874,40.875531,40.87704,40.8802945,40.8740704,40.84552,40.8549,40.877964,40.80722,40.6882551659801,40.8462759292195,40.85834,40.8558,40.7013344806699,40.8604244,40.8604787,40.8649213,40.8660052,40.873265,40.859532,40.8714452068712,40.8271338042356,40.866899,40.867,40.8684871,40.850885,40.73988840859,40.7529728216068,40.7601773953778,40.7480331942877,40.7576723402504,40.7823226073088,40.8421023610217,40.7122195800905,40.7617122791067,40.8238836644176,40.668757,40.663657,40.7046966789497,40.7800133661056,40.7733675028434,40.6873724765072,40.651745,40.6870023129262,40.6781838797765,40.853827,40.7275580733585,40.74133,40.747370756468,40.750756,40.752049,40.68917,40.865364,40.7551671907214,40.7700301025504,40.7051480769839,40.6789700704757,40.7577693544831,40.7036617052413,40.7059451327088,40.7080658238065,40.72231,40.7321389628738,40.7099180692153,40.7173184038558,40.7197863545282,40.7273786932322,40.7233468321802,40.7251285241158,40.7241294409009,40.7285474502394,40.730310710009,40.7313930336415,40.7247900774634,40.7297080564499,40.7133215120819,40.7248612225482,40.72054,40.7251173442239,40.7064107552361,40.7375299330107,40.765959181658,40.7496526847285,40.72323,40.7197920901383,40.7484802344858,40.7459107283428,40.7332086265224,40.7371691936988,40.7406931773304,40.754818,40.73795,40.642501,40.71759894981,40.7537733683604,40.7386609142855,40.752762088742,40.717411,40.790586067792,40.854123869116,40.7405642363395,40.7065636746709,40.8558903060389,40.82123860172,40.7975207812476,40.7344356406946,40.7018885891337,40.7199611811714,40.8670940626815,40.8126361676932,40.7153416204245,40.71503,40.8567080183126,40.6609377949317,40.7356591481923,40.7386634546531,40.7402135688492,40.74283,40.7443653191867,40.7465376197805,40.7471482490328,40.74408,40.742218349961,40.7408212078232,40.7403466808719,40.7378169988119,40.7382493734594,40.7421563682773,40.74562,40.74431,40.7453468258098,40.7469267568738,40.7435402734287,40.7398599569916,40.7378723795054,40.7394138749841,40.7411199446815,40.7494782218348,40.7500164042593,40.7500976820948,40.746228746942,40.7448062877224,40.7434975983697,40.8530445586899,40.7424,40.74086,40.73737,40.7429,40.74451,40.74732,40.74462,40.745502,40.74679,40.74324,40.74193,40.74891,40.74838,40.75326,40.75048,40.75098,40.74549,40.74521,40.74501,40.74261,40.7471,40.74958,40.75201,40.74893,40.7469450452452,40.75053,40.74589,40.74446,40.74334,40.7428,40.74179,40.74288,40.7448,40.74091,40.7388,40.73577,40.73568,40.73394,40.7493722738996,40.7261,40.7343116627657,40.82182,40.8616988350786,40.8301283948092,40.7717171052083,40.71334,40.71301,40.7107,40.71119,40.70886,40.70067,40.69662,40.69338,40.70055,40.70311,40.70204,40.70264,40.70117,40.70575,40.71032,40.71225,40.71798,40.71921,40.71693,40.71988,40.72098,40.72235,40.72249,40.72403,40.72155,40.72368,40.72353,40.73028,40.70389,40.8531875886197,40.715922327095,40.7168853849537,40.7075188830923,40.7179085273406,40.71832,40.70809,40.71453,40.7103612992258,40.69465,40.6938,40.68995,40.68973,40.68834,40.68927,40.68713,40.68454,40.68282,40.68487,40.68814,40.68705,40.68609,40.68374,40.68273,40.68143,40.68494,40.68452,40.68491,40.68158,40.67922,40.67853,40.68018,40.67872,40.67854,40.67709,40.67621,40.6776,40.67428,40.67077,40.67234,40.67514,40.67955,40.68078,40.67412,40.67113,40.67297,40.67686,40.6767,40.67202,40.6747,40.67717,40.67372,40.67261,40.67095,40.67639,40.67404,40.67128,40.66852,40.67423,40.67313,40.67293,40.6791185608216,40.68012,40.67242,40.6705,40.67607,40.66992,40.67486,40.67374,40.67522,40.63556,40.72558,40.686722,40.68012,40.68044,40.67923,40.6814658848122,40.67308,40.66959,40.67524,40.66929,40.67351,40.67015,40.66591,40.7014046341064,40.690687586143,40.7615304515811,40.690434,40.7413272,40.6557221679716,40.6886263,40.6910363748993,40.66846,40.6698975792422,0,40.6756,40.7564035232725,40.68332,40.7540822061557,40.6716,40.67568,40.66598,40.8351227990364,40.7535468186707,40.676513,40.6919925157634,40.6523035730306,40.7037816735483,40.72419,40.67738,40.67669,40.69715,40.6529282936381,40.6878809396128,40.7743181132739,40.67154,40.69953,40.67686,40.66639,40.66626,40.6667,40.66559,40.66481,40.67251,40.67972,40.7298483034653,40.66688,40.66732,40.66403,40.66318,40.66127,40.66967,40.66939,40.66876,40.66619,40.66035,40.66026,40.65798,40.65563,40.65815,40.65519,40.65686,40.6595,40.65707,40.65549,40.66104,40.65794,40.66184,40.66067,40.66227,40.66178,40.65791,40.66124,40.65666,40.756764750865,40.70497,40.70229,40.69559,40.71237,40.6605,40.66288,40.66155,40.66343,40.66034,40.739152727637,40.71435,40.71888,40.70929,40.72897,40.66811,40.65969,40.69723,40.71391,40.65808,40.71484],[-74.0271502733231,-74.03097,-74.0379770100117,-74.033540636301,-74.02658,-74.0836394,-74.043845,-74.0364857,-74.0243527293205,-74.0459525585174,-74.0351110696793,-74.05099,-74.034234,-74.0496915578842,-74.0384115278721,-74.0337589,-74.03332,-74.066921,-74.0575736,-74.050443636,-74.071261882782,-74.0277805924416,-74.0499678254128,-74.0714550018311,-74.029127061367,-74.0376833081245,-74.0400409698486,-74.0354826,-74.0322330594063,-74.0641943,-74.0393,-74.042817056179,-74.0428841114044,-74.051788633,-74.0710607171059,-74.047726625,-74.04309,-74.0335519,-74.0808427333832,-74.0316,-74.0424120426178,-74.0867006778717,-74.0524783,-74.0784059464931,-74.03571,-74.0439909,-74.0789,-74.0358647704124,-74.0286033600569,-74.030376970768,-74.0625,-74.0404433012009,-74.0324530005455,-74.0385255217552,-74.0416637063026,-74.0676221251488,-74.0595030784607,-74.046304543,-74.0628585219383,-74.0269886702299,-74.0506564,-74.0572714805603,-74.044247311,-74.0369041264057,-74.0321082,-74.0719592571259,-74.0469637513161,-74.042521,-74.0666109323502,-74.0345008671284,-74.0303045511246,-74.0389144420624,-74.0240201354027,-74.0503889322281,-74.0455716848373,-74.0644370019436,-74.03805095,-74.0281990170479,-74.0487903356552,-74.0557013,-73.99392888,-74.00666661,-74.00016545,-73.97632328,-74.00149746,-73.97803415,-73.95928168,-74.00674436,-74.00297088,-73.99337909,-73.98068914,-74.0091059,-73.98085795,-73.997249007225,-74.00910627,-73.9816324043,-73.99612349,-73.99810231,-73.97032517,-73.99456405,-73.97738662,-74.01043382,-74.00681753,-73.99548059,-73.99383605,-73.99994661,-74.00552427,-73.971878855,-73.99379025,-73.99014892,-73.98713956,-74.00859207,-73.9813018,-73.97493121,-73.973736,-73.96536851,-73.97703874,-74.00483091,-74.00771779,-74.0090009,-73.99565293,-73.99480012,-73.99852205,-73.99800419,-74.00247214,-73.96885458,-74.01234218,-74.01167797,-73.98362464,-73.9737299,-74.00731853,-73.99147535,-73.97574813,-73.98765428,-73.99973337,-73.97178913,-73.96563307,-73.98476437,-73.97371465,-74.0026376103,-73.99074142,-73.95881081,-73.984844,-73.9910262823105,-73.9957214,-73.99293911,-73.986923,-73.9796772,-73.98368779,-73.97793172,-73.99949601,-74.01361706,-73.96724467,-73.98990025,-73.99851193,-73.98802084,-73.989111,-73.96751037,-74.00670227,-74.0065509080887,-73.98185424,-74.009447,-74.005549,-73.98971773,-73.98631746,-73.981013,-73.98473765,-73.98426726,-74.01658354,-74.00965965,-74.00562789,-73.99193043,-73.97948148,-73.99726235,-73.99404649,-73.99906065,-73.97422494,-73.98776323,-73.97628939,-73.98016555,-73.96986848,-73.95380904,-74.00618026,-74.008591,-73.98329859,-73.9870295,-73.97722479,-73.97431458,-73.96223558,-73.99974372,-73.98261206,-74.00711384,-73.97498696,-74.00887308,-73.99190759,-73.98753523,-74.01713445,-73.96023854,-73.968896,-73.97069431,-74.00214988,-74.00026394,-73.9580136537552,-73.95381995,-74.00722156,-74.00566443,-73.9916,-74.00293877,-74.000271,-73.96603308,-74.00234482,-74.0046073,-74.002950346,-73.9842844,-73.99344559,-73.987167,-73.97995466,-73.97768752,-73.9557689392,-73.96922273,-73.9999786,-73.9647628,-73.98178024,-73.98997825,-73.99069656,-74.008119,-73.99595065,-73.99400398,-73.98517977,-73.97668709,-73.99422366,-74.00926027,-73.97265183,-74.01020234,-73.982578,-73.97355569,-73.96968902,-73.97129668,-73.988038,-73.98690506,-74.01322069,-74.013942,-73.98783413,-73.98379855,-74.00366443,-73.99415556,-73.95399026,-73.9500479759,-73.98564945,-73.98978041,-73.97282625,-73.993915,-73.96408963,-73.98142006,-73.99529885,-73.9851615,-73.9979009,-73.98788205,-73.99915362,-73.96592976,-73.96905301,-73.97402311,-73.98169333,-74.005226,-73.96590294,-73.98205027,-74.00451887,-73.96759673,-73.98658032,-73.99144871,-73.98192338,-73.98268129,-74.00004031,-73.95698119,-73.98194829,-73.9919254,-73.98683077,-73.97966069,-73.9900262,-73.99884222,-73.9912551,-73.99061728,-73.96264403,-73.99931783,-73.98889957,-73.98014437,-73.98338988,-73.98855723,-74.00176802,-73.993934,-73.99723551,-73.99301222,-73.99238967,-73.99009296,-73.98336183,-73.97121214,-73.981095,-73.98751968,-73.98165557,-73.98848395,-73.97973776,-73.99667444,-74.00197139,-73.98042047,-73.97772429,-73.99839279,-73.988639,-74.00277668,-73.99461843,-73.96784384,-73.97207836,-74.0021163,-73.98490707,-73.97706058,-73.99098507,-73.9904603362083,-73.99266288,-73.960876,-73.97536082,-73.98409214,-73.96024116,-73.9821535348892,-73.97809472,-73.98303529,-73.963198,-73.9805442094803,-73.97634151,-74.01677685,-73.99682619,-74.002381414175,-73.976806,-73.97121414,-73.98859651,-73.959223,-73.9616507291794,-73.94142771,-73.9298911,-73.934903,-73.938475,-73.938037,-73.944118,-73.94977,-73.96304,-73.94111,-73.935775,-73.947915,-73.942061,-73.950916,-73.95133465,-73.9452416,-73.93705428,-73.939877,-73.94626915,-73.94371094,-73.94954908,-73.95238108,-73.93756926,-73.95032283,-73.94708417,-73.9437303,-73.940636,-73.94818595,-73.94407279,-73.94976519,-73.94644578,-73.94016171,-73.95796783,-73.9448625,-73.95095259,-73.9606314897537,-73.95608,-73.944024,-73.95141312,-73.94100005,-73.95739,-73.944507,-73.95234386,-73.952029,-73.95852515,-73.95850939,-73.94485918,-73.94500379,-73.95242,-73.947526216507,-73.95484712,-73.9504154,-73.955736,-73.94308,-73.95212324,-73.94434,-73.95621,-73.95299117,-73.95779,-73.95394,-73.9550858,-73.95826,-73.95866,-73.95284,-73.95411749,-73.94733276,-73.9558732509613,-73.93540375,-73.95451,-73.94977234,-73.9432635,-73.9521,-73.94594845,-73.94073717,-73.94335788,-73.9622461795807,-73.97109243,-73.96526895,-73.95772297,-73.971518,-73.96685276,-73.9640942215919,-73.9535166,-73.95818491,-73.96094022,-73.9642739295959,-73.9590097,-73.95772073,-73.9567526,-73.95407149,-73.95068615,-73.94989233,-73.96119945,-73.95856158,-73.95348296,-73.94446054,-73.98261428,-73.98266566,-73.97374737,-73.9772853255272,-73.97782542,-73.97898475,-73.9762057363987,-73.9856243133545,-73.9809304475784,-73.98128127,-73.97283406,-73.97667321,-73.97754961,-73.9888858795166,-73.98288594,-73.977112,-73.98362492,-73.941342,-73.93561,-73.97137,-73.9659208059311,-73.978059142828,-73.9937996864319,-73.9543953537941,-73.944694,-73.9622622728348,-73.9949034154415,-73.9923272,-73.9476791024208,-74.0148657560349,-73.9946848154068,-74.011295735836,-73.9966213703155,-73.990752696991,-73.97041561,-73.9559590816498,-73.9747,-73.9521667,-73.97757,-73.9488134,-73.9728891849518,-73.946041,-73.957481,-73.9739,-73.955327,-73.9489196240902,-73.97988067,-73.99383324,-73.95206,-73.9763760566711,-73.968087,-73.9643412291,-73.99440329,-73.98377641,-73.9496304094791,-73.98199886,-73.974124,-73.99645295,-73.94860294,-73.98396846,-74.0016256,-73.94594,-73.9854617,-73.971888,-73.99917254,-73.98700053,-73.9471673,-73.98895053,-73.99785267,-73.9904394,-73.9605909006,-73.99333264,-73.950503,-74.00194698,-73.94728331,-73.9645,-73.99318208,-74.00494695,-73.9711457439,-73.9907902479172,-74.0075572,-73.98282002,-73.953559,-74.0119555592537,-73.94552579,-73.97846879,-74.0100698,-74.0094613,-73.9621128676,-74.011169,-73.9524292945862,-73.9752320945263,-74.01275056,-74.015665,-73.97087984,-73.97041192,-73.94164802,-74.0087952464819,-73.97363831,-73.9684528112411,-73.98470567,-73.9664492472,-73.97484126,-73.96703464,-73.9786517,-73.9787282,-73.96069399,-73.95033068,-73.9814832,-73.97839676,-73.9681805305,-73.95249933,-73.98352355,-73.9468208,-73.95577801,-73.95482273,-73.98775226,-73.955613,-73.96060712,-73.962220698595,-73.99037292,-73.96222088,-73.94755757,-73.99364123,-73.99475825,-73.96699104,-73.99599099,-73.99905709,-73.94945003,-73.99990419,-74.00348559,-73.93956237,-74.00860912,-74.00785041,-74.00647134,-74.00324957,-74.00014502,-73.99869893,-73.99785768,-73.9898300170898,-73.99203074,-73.98876585,-73.98541675,-73.98208968,-73.9876547455788,-73.99063168,-73.98759104,-73.98620772,-73.98302136,-73.98258555,-73.9756733179092,-73.97519523,-73.97324283,-73.97111473,-73.98154004,-73.98432695,-73.98901629,-74.00242364,-73.9794525504112,-73.945993,-73.94370784,-73.9779075980186,-73.9422369003296,-73.99596,-74.010065,-73.9770036935806,-73.989494740963,-73.9798200130463,-73.9488539099693,-73.9491033554077,-73.9470595121384,-73.9482128620148,-73.9720952510834,-73.9693057537079,-74.0112233161926,-73.9713871479034,-73.9879739284515,-73.98770570755,-74.0016585588455,-74.0074735879898,-74.0087020397186,-74.0253531932831,-73.937261,-73.93504,-73.9419949,-73.9389152,-73.9423,-73.9362541,-73.9383,-73.9333349,-73.9311847,-73.9349,-73.944846,-73.9442507,-73.9441232,-73.942954,-73.9379,-73.936322,-73.9398167,-73.9396861,-73.953149,-73.9500739,-73.949373,-73.9532423,-73.923706,-73.927631,-73.918544,-73.9184057,-73.9170074,-73.9452087,-73.951475,-73.9523,-73.9120938,-73.916142,-73.9225403,-73.9153175,-73.9125551,-73.9077436,-73.9430681,-73.9145645,-73.9492286,-73.9183302,-73.9518776,-73.954692,-73.945925,-73.9641,-73.9710097,-73.96295,-73.9607082,-73.9551508,-73.956461,-73.9596214,-73.9573645591736,-73.9646795,-73.9612547,-73.9587903,-73.9590255,-73.962408,-73.941606,-73.964928,-73.957145,-73.93797,-73.945133,-73.9680438,-73.9391224,-73.9279917,-73.932719,-73.9362726,-73.9411265,-73.9321455,-73.9262231,-73.9561677,-73.9236611,-73.952918,-73.921631,-73.9242751,-73.96579,-73.930562,-73.9342862,-73.9564947,-73.954131,-73.9631611,-73.9671457,-73.9609,-73.9631145,-73.9576801,-73.9554162,-73.9364848,-73.9618148,-73.9373554,-73.9347774,-73.9588,-73.930819,-73.9286471,-73.925921,-73.9222427,-73.9574686,-73.9166368,-73.9142678,-73.9170071,-73.9569115,-73.920827,-73.9240312,-73.9538746,-73.9265474,-73.948852,-73.9322662,-73.9566,-73.9354504,-73.9534573,-73.9286078,-73.957539,-73.9249574,-73.9136695,-73.9169858,-73.941275,-73.9246145,-73.9479119,-73.9309134,-73.939182,-73.9634,-73.9490782,-73.9477649331093,-73.9559308,-73.9951676130295,-73.9659959077835,-73.9891862869263,-73.9398550987244,-73.970775604248,-73.9532473683357,-73.933492898941,-73.9858362078667,-74.0036755800247,-73.9605563879013,-74.0103006362915,-73.9498436450958,-73.955637216568,-73.9867267012596,-74.0147262811661,-74.0050703287125,-73.9744978398085,-73.9664947986603,-74.0093551576138,-73.9106512069702,-73.9744012802839,-73.9592193067074,-73.9891869574785,-73.9891795814037,-73.941764831543,-73.9996878057718,-73.983293,-73.99431,-73.996429592371,-73.9806796610355,-73.9974018931389,-73.9544353965357,-73.9552013576031,-73.9379560947418,-73.9795041829348,-73.9209334552288,-73.9790689945221,-73.9584079384804,-73.95960688591,-73.948800265789,-73.9934402704239,-73.98255,-73.962658,-74.002353,-73.976831,-73.986274,-73.991479,-74.000939,-74.000472,-73.9295748621225,-74.00473,-73.9788007736206,-73.9574617892504,-73.9351,-73.93372,-73.92997,-73.92535,-73.92153,-73.926241,-73.9865,-73.923711,-73.93936,-73.94008,-73.93894,-73.93734,-73.93581,-73.9333,-73.933871,-73.93515,-73.92976,-73.92836,-73.923769,-73.92834,-73.923044,-73.92095,-73.919911,-73.917775,-73.918877,-73.997178,-74.00495,-73.98455,-73.996732,-73.97141,-73.959432,-73.991581,-74.03281,-73.993612,-73.982079,-73.98805,-73.956934,-73.986842,-73.939991,-73.978434,-73.9342,-73.992085,-74.005141,-73.972628,-73.967641,-73.93323,-73.94051,-73.94839,-73.95204,-73.93098,-73.93318,-73.93641,-73.93921,-73.90369,-73.90756,-73.90925,-73.91564,-73.91321,-73.90798,-73.91227,-73.9168,-73.91181,-73.91693,-73.90663,-73.90974,-73.92146,-73.92852,-73.92524,-73.91164,-73.90904,-73.9196,-73.92825,-73.91516,-73.91337,-73.9179,-73.92302,-73.92807,-73.93223,-73.91945,-73.92157,-73.92793,-73.92587,-73.92851,-73.93637,-73.93948,-73.94173,-73.94546,-73.95161,-73.92754,-73.91422,-73.91566,-73.91605,-73.90951,-73.90506,-73.90474,-73.90824,-73.92617,-73.935877,-73.90623,-73.90674,-73.90742,-73.91054,-73.9007,-73.89795,-73.90245,-73.90271,-73.91966,-73.91727,-73.960405,-73.90311,-73.91292,-73.9022,-73.90737,-73.9096,-73.91873,-73.91092,-73.923511,-73.9127,-73.93367,-73.9116664230824,-74.001702,-73.9087629318237,-73.90625,-73.91497,-73.9646,-73.94844,-73.93889,-73.91116,-73.90632,-73.91458,-73.9117187261581,-73.99011,-74.014847,-73.93039,-73.90408,-73.907856,-73.979827,-73.981687,-73.97877,-73.937195,-73.925177,-73.927107,-73.928803,-73.927311,-73.93973,-73.941878,-73.94521,-73.921606,-73.923697,-73.924963,-73.927987,-73.92965,-73.948222,-73.954295,-73.959089,-73.918889,-73.9174,-73.913863,-73.911034,-73.909513,-73.956156,-73.950988,-73.951819,-73.947568,-73.911545,-73.914718,-73.91924,-73.917875,-73.916124,-73.911837,-73.937413,-73.91081,-73.914932,-73.917037,-73.92037,-73.94386,-73.951346,-73.921411,-73.917338,-73.915368,-73.91186,-73.907729,-73.949738,-73.903927,-73.911918,-73.916071,-73.914688,-73.942722,-73.911759,-73.912411,-73.90202,-73.907521,-73.944279,-73.939929,-73.914737,-73.905203,-73.954743,-73.903944,-73.922962,-73.909235,-73.934077,-73.923604,-73.933509,-73.937838,-73.936085,-73.935856,-73.939336,-73.9422959089279,-73.936521,-73.935971,-73.939249,-73.945144,-73.947868,-73.91839,-73.955857,-73.951947,-73.951989,-73.947257,-73.908116,-73.945909,-73.942924,-73.950426,-73.936996,-73.946168,-73.936153,-73.957163,-73.919763,-73.941616,-73.930605,-73.941057,-73.937948,-73.941427,-73.941323,-73.936371,-73.919549,-73.908351,-73.917579,-73.946665,-73.9477213,-73.9536,-73.9586520195007,-73.9867132902145,-73.936232,-73.99177,-73.99005,-73.942386,-73.94102,-73.939326,-73.939865,-73.939789,-73.937496,-73.945446,-73.942939,-73.941409,-73.937044,-73.97513,-73.938631,-73.935111,-73.940493,-73.933651,-73.937648,-73.908097743988,-73.936064,-73.933291,-73.931205,-73.937854,-73.941343,-73.938423,-73.9434,-73.9781161397696,-73.936085,-73.969862,-73.928947,-73.919379,-73.926226,-73.922394,-73.92112,-73.918316,-73.9154,-73.913004,-73.919228,-73.926075,-73.920999,-73.924689,-73.931015,-73.928747,-73.915585,-73.925101,-73.917641,-73.922423,-73.908863,-73.929327,-73.921461,-73.928381,-73.955277,-73.923267,-73.929372,-73.908345,-73.904867,-73.93022,-73.9751583337784,-73.9847157150507,-73.93077,-73.92389,-73.91906,-73.92404,-73.923391,-73.9602512866668,-73.9772920311316,-73.97113,-73.9641706646307,-73.9618840813637,-73.966800570488,-73.927111,-73.927311,-73.925961,-73.910489,-73.927421,-73.9149,-73.917256,-73.901583,-73.899939,-73.896447,-73.901311,-73.91089,-73.908699,-73.907451,-73.90242,-73.901824,-73.894143,-73.891559,-73.8855,-73.888161,-73.890247,-73.895069,-73.896752,-73.90521,-73.905158,-73.904556,-73.894025,-73.888271,-73.893721,-73.90153,-73.896599,-73.894717,-73.900277,-73.900216,-73.8985,-73.88955,-73.885272,-73.884308,-73.91288,-73.92818,-73.91172,-73.908544,-73.9109,-73.911259,-73.903719,-73.907618,-73.887729,-73.903743,-73.905838,-73.902185,-73.896853,-73.892103,-73.889686,-73.892686,-73.899047,-73.887931,-73.886445,-73.925294,-73.94592,-73.915073,-73.896372,-73.898751,-73.94186,-73.917946,-73.91125,-73.916407,-73.92243,-73.912042,-73.90549,-73.897263,-73.891677,-73.888719,-73.892317,-73.904192,-73.917447924614,-73.926907,-73.927034,-73.91956,-73.898802,-73.90208,-73.895133,-74.0076532959938,-74.0052741765976,-74.0083158016205,-74.0043228,-73.9960889518261,-73.941928,-73.928939,-73.9914205670357,-73.890413,-73.888587,-73.911479,-73.8931428,-73.982631,-73.9780926704407,-73.9919435977936,-73.992573,-73.996975,-73.974235,-73.974996,-73.989539,-73.888546,-73.949702,-74.007867872715,-73.9073014632277,-73.8886249065399,-73.9260886609554,-73.886659,-73.929737,-73.920603,-73.910963,-73.919998,-73.917014,-73.904632,-73.906018,-73.908335,-73.925384,-73.914142,-73.912715,-73.909831,-73.907107,-73.902534,-73.912402,-73.908906,-73.900318,-73.901614,-73.903865,-73.901001,-73.906558,-73.916894,-73.915098,-73.900063,-74.013247,-73.964179,-74.0085149556398,-74.00887,-74.008769094944,-73.9158399403095,-73.919543,-73.90676,-73.903427,-73.906127,-73.903787,-73.90842,-73.902382,-73.896849,-73.895166,-73.893531,-73.893675,-73.890745,-73.899558,-74.00697,-74.0053626894951,-73.9951018989086,-73.996637,-73.919046,-73.9189754426479,-73.9398631453514,-73.9271441102028,-73.9111903309822,-73.912604,-73.9274364709854,-73.936515,-73.9326627552509,-73.923162,-73.908782,-73.909562,-73.910989,-73.914952,-73.911517,-73.904726,-73.910485,-73.912212,-73.912297,-73.896293,-73.889914,-73.938787,-73.914527,-73.9181157946587,-73.930486,-73.915026,-73.9176557959763,-73.990993,-73.9853024482727,-73.9886498451233,-73.9841705560684,-73.9931613206863,-73.9867260307074,-73.9944635331631,-73.992466,-73.995549,-73.983074,-73.991007,-73.995554,-73.990974,-73.98854,-73.983864,-73.977335,-73.981231,-73.976291,-73.977739,-73.979342,-73.97673,-73.965248,-73.967829,-73.97058,-73.989605,-73.972432,-73.973663,-73.977433,-73.979681,-73.984276,-73.986418,-73.998623,-73.998194,-74.001141,-74.001131,-74.005144,-74.015606,-73.979239,-73.980963,-73.981073,-74.003101,-74.002356,-74.008906,-74.011884,-74.014531,-74.023087,-74.021506,-74.012384,-74.005708,-74.009441,-74.020105,-74.013318,-74.010996,-74.013821,-74.019776,-74.02324,-74.02564,-74.020005,-74.003754,-74.008957,-74.017651,-74.024714,-73.98849,-74.00925,-73.980139195919,-74.00422,-74.007168,-74.009271,-74.018846,-73.995068,-74.009627,-74.006664,-74.016562,-74.006584,-74.004483,-74.000911,-74.000057,-74.011405,-74.016866,-74.022141,-73.9612390102593,-73.9958167076111,-73.9447689056396,-73.977504,-73.972573,-74.01782,-73.9798977971077,-73.929513,-73.993037,-73.972212,-73.93441,-73.931308,-73.935662,-73.932173,-73.925591,-73.926363,-73.922661,-73.92006,-73.920827,-73.919685,-73.911503,-73.9745146036148,-74.026823,-73.9329698681831,-73.927173614502,-73.928489,-73.929719,-73.9230939745903,-73.926994,-73.92936,-73.931537,-73.921417593956,-73.922648,-73.9207631349564,-73.9151975512505,-73.9183719456196,-73.928808,-73.933872,-73.912807,-73.918598,-73.979826,-73.9798897504807,-74.001328,-73.9861688017845,-73.9995126,-73.985649,-73.9912777394056,-73.973217,-74.015726,-73.974165,-73.9397209882736,-73.937878,-73.998633,-74.009486,-73.919637,-73.914311,-73.903869,-73.911359,-73.916082,-73.910765,-73.908964,-73.903178,-73.912498,-73.90266,-73.914318,-74.0167558512167,-73.969106,-73.918389,-73.912785,-73.901883,-73.908731,-73.910751,-73.907302,-73.905528,-73.89637,-73.983262,-73.916418,-73.916661,-73.91278,-73.898385,-73.898589,-73.894831,-73.985543,-74.026081,-74.0255355834961,-73.89615,-73.922079,-73.91008,-73.91219,-73.90741,-73.90316,-73.90108,-73.89794,-73.89522,-73.89246,-73.89286,-73.89042,-73.89148,-73.89186,-73.88565,-73.88412,-73.88145,-73.88459,-73.919205,-73.9161206,-73.898237,-73.90079,-73.90678,-73.88807,-73.89533,-73.88971,-73.88839,-73.88661,-73.89192,-73.88366,-73.88534,-73.88702,-73.907342,-73.90546,-73.9846909046173,-73.99253,-73.9862,-73.981909,-73.978776,-73.9946512877941,-73.98384,-73.89714,-73.8818756582,-73.901318,-73.9886981248856,-73.90857,-73.902541,-73.89105,-73.89657,-73.8863864831,-73.88943,-73.8860653648,-73.8833650931,-73.91722,-73.90281,-73.8847550291,-73.9418,-73.9954519271851,-73.9093127846718,-73.90626,-73.89956,-73.9847123622894,-73.9093359997,-73.9057169936,-73.9024238,-73.904254892,-73.906646,-73.913303,-73.8928963243961,-73.9227358996868,-73.901942,-73.8857764,-73.8884559781,-73.906469,-73.9895859360695,-73.9873489737511,-73.9848679304123,-73.973827958107,-73.9076994359493,-73.9598751068115,-73.9422395825386,-74.0104722976685,-73.9865510165691,-73.8974027708582,-73.966438,-73.963014,-74.0080341696739,-73.9066761732101,-73.9138256013393,-73.9817605912685,-73.975988,-73.9766496419907,-74.0170168876648,-73.920765,-73.955058529973,-73.93616,-73.9477729797363,-73.978326,-73.979635,-73.9886,-73.92791,-74.0005990862846,-73.9819684624672,-73.9707809686661,-73.9785526692867,-73.9792943000793,-74.0131813287735,-74.0132188796997,-74.0135595202446,-74.0106,-74.0036380290985,-73.9916110038757,-73.9906775951385,-73.9787162840366,-73.988408446312,-73.9826591312885,-73.9813166856766,-73.9790126681328,-73.981759250164,-73.9804717898369,-73.9828670024872,-73.9843006432056,-73.9865979552269,-73.9900968968868,-73.9921313524246,-73.9949,-73.999304920435,-74.0055973827839,-74.0055893361568,-73.9831352233887,-73.9952078461647,-74.00314,-74.0052238852195,-73.9825558662415,-73.9980711042881,-73.9756813647,-73.9812254905701,-73.9816063642502,-73.988154,-73.98509,-74.006055,-74.0158796310425,-73.9993759989738,-73.9898729324341,-73.9928045870511,-73.999573,-73.941957950592,-73.8993222266436,-73.9985257387161,-73.9683187007904,-73.9270824193954,-73.9173299074173,-73.9489397406578,-73.9379078149796,-74.0108987689018,-74.0084432065487,-73.9172950387001,-73.9292496442795,-73.9386507868767,-74.01246,-73.9026528596878,-73.986804485321,-73.9347884058952,-73.9409380406141,-73.9353704452515,-73.9321,-73.9317239820957,-73.9321584999561,-73.9290243387222,-73.92901,-73.929351568222,-73.9314718544483,-73.9288607239723,-73.9302407205105,-73.9273747801781,-73.9266264438629,-73.92402,-73.92601,-73.9219419658184,-73.9208248257637,-73.9243519306183,-73.9240032434464,-73.9226406812668,-73.921319693327,-73.9210367202759,-73.918264657259,-73.9154094457626,-73.913497030735,-73.9161631464958,-73.9172896742821,-73.9186052978039,-73.9183062314987,-73.91808,-73.91708,-73.91803,-73.91395,-73.91412,-73.91197,-73.91143,-73.909887,-73.90893,-73.908,-73.90913,-73.90899,-73.90699,-73.90585,-73.90513,-73.90799,-73.90605,-73.90462,-73.9036,-73.903,-73.9028,-73.90256,-73.89986,-73.89981,-73.8965025544167,-73.8977,-73.89915,-73.89764,-73.89903,-73.89584,-73.89564,-73.89283,-73.89377,-73.90273,-73.90338,-73.90184,-73.90387,-73.90128,-73.8973876833916,-73.90917,-73.9837253093719,-73.95353,-73.9185570180416,-73.886302113533,-73.931592553854,-73.91572,-73.90968,-73.90525,-73.90307,-73.90182,-73.89907,-73.90056,-73.90061,-73.8943,-73.89547,-73.89288,-73.88981,-73.8904,-73.89676,-73.89955,-73.89111,-73.91818,-73.9124,-73.90198,-73.90556,-73.90701,-73.91215,-73.90854,-73.90853,-73.90295,-73.90458,-73.89967,-73.90421,-73.89116,-73.9271575212479,-73.9060136675835,-74.0065012872219,-74.0010805428028,-73.908454477787,-73.90128,-73.89549,-73.90105,-73.9653038978577,-73.9343,-73.93114,-73.9365,-73.93353,-73.93306,-73.93017,-73.93008,-73.9322,-73.93488,-73.9293,-73.92693,-73.92338,-73.92628,-73.9261,-73.92926,-73.92565,-73.92299,-73.92011,-73.91493,-73.91959,-73.92192,-73.91642,-73.91136,-73.91105,-73.91367,-73.9008,-73.90351,-73.94963,-73.9503,-73.9507,-73.94763,-73.94716,-73.94709,-73.94613,-73.94447,-73.94222,-73.93896,-73.93607,-73.93051,-73.92539,-73.92512,-73.92285,-73.92199,-73.91977,-73.92222,-73.92748,-73.92772,-73.92825,-73.92284,-73.91656,-73.91387,-73.90909,-73.9717626571655,-73.95362,-73.93094,-73.9308,-73.92171,-73.92002,-73.91123,-73.90852,-73.9061,-74.01298,-73.90417,-73.938988,-73.93168,-73.92842,-73.92588,-73.9141568541527,-73.94191,-73.94237,-73.93596,-73.93679,-73.93363,-73.92538,-73.92602,-73.9876802265644,-73.9834785461426,-73.9900700747967,-73.903737,-73.937999,-74.0100082755089,-73.9851911,-73.992010653019,-73.9282,-73.9169637858868,0,-73.9415,-73.9941014349461,-73.91711,-73.9494225382805,-73.93378,-73.91396,-73.9284,-73.9119681715965,-73.978965729475,-73.959431,-73.9325501024723,-74.013449549675,-73.9907339215279,-73.91244,-73.90829,-73.94437,-73.8936,-74.0128648281097,-73.9893928170204,-73.9454877376556,-73.91433,-73.88873,-73.93327,-73.95346,-73.948,-73.93972,-73.93712,-73.94269,-73.93642,-73.93467,-73.974552154541,-73.9425,-73.93398,-73.94769,-73.95076,-73.95352,-73.9503,-73.94514,-73.93376,-73.93162,-73.95679,-73.96045,-73.96051,-73.95968,-73.95674,-73.9564,-73.95331,-73.95041,-73.95005,-73.94983,-73.94795,-73.94735,-73.94542,-73.94243,-73.93762,-73.93445,-73.93967,-73.93164,-73.93109,-73.9997144043991,-73.89965,-73.90145,-73.89927,-73.89499,-73.9626,-73.94019,-73.93974,-73.93472,-73.93618,-74.0330819785595,-73.91405,-73.91427,-73.89441,-73.90115,-73.9505,-73.94517,-73.89811,-73.90299,-73.93415,-73.909],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"setView":[[40.7128,-74.006],12,[]],"limits":{"lat":[0,40.88226],"lng":[-74.0867006778717,0]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-258e238e7200f9e22043" style="width:960px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-258e238e7200f9e22043">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[40.71539114317,40.7464126483772,40.7499849090714,40.7233315864644,40.71942,40.747907209689,40.7422579775645,40.750915534785,40.7127742,40.7177325,40.75453,40.7182113,40.7272235,40.73736,40.7192517,40.752960630465,40.7145840353589,40.7275514673001,40.74542,40.737711,40.7311689,40.72165072488,40.719282200707,40.7369822181872,40.7216301426384,40.722103786686,40.7236589,40.7360676564825,40.7242941,40.7151776773203,40.73879,40.7426593327314,40.742677141,40.734785818,40.7431399396563,40.71848892,40.737551272458,40.7487159453802,40.73367,40.7166150008305,40.7141454,40.7091983224544,40.75409,40.71941,40.7481612106515,40.7376037,40.7065754506345,40.7246050998869,40.7518674823282,40.7124188237569,40.73743,40.71113,40.7443187,40.7499432541225,40.7409726086436,40.7253399253558,40.7287448,40.7134638266919,40.7431328271055,40.7349610200095,40.7241765,40.72152515,40.727595966,40.7459099663156,40.7398137231184,40.7257261374256,40.7112423,40.7352083804536,40.750604142369,40.7260117296463,40.725685483629,40.7183551982321,40.7359375844633,40.740802,40.7143583687043,40.7443978330956,40.7310088869873,40.7459838829156,40.7211236,40.7252891078113,40.76727216,40.71911552,40.71117416,40.68382604,40.74177603,40.69608941,40.68676793,40.73172428,40.72710258,40.69239502,40.69839895,40.71625008,40.7208736,40.722103786686,40.71473993,40.752062307,40.69089272,40.72917025,40.75323098,40.73971301,40.7381765,40.70905623,40.74334935,40.70037867,40.70277159,40.73781509,40.71146364,40.7546011026,40.72743423,40.69597683,40.7284186,40.7361967,40.69196566,40.68981035,40.697787,40.69196035,40.69327018,40.73535398,40.72185379,40.71870987,40.72456089,40.72317958,40.73226398,40.73532427,40.71939226,40.68940747,40.70122128,40.70365182,40.69474881,40.6917823,40.70706456,40.72229346,40.72368361,40.75097711,40.71910537,40.69308257,40.68650065,40.69766564,40.7643971,40.7390169121,40.73454567,40.6845683,40.713126,40.7302066052995,40.73049393,40.71406667,40.734232,40.68683208,40.72217444,40.72082834,40.72362738,40.70463334,40.76095756,40.71427487,40.71307916,40.7172274,40.722055,40.69610226,40.70355377,40.7096008936354,40.72453734,40.711066,40.717571,40.69991755,40.69236178,40.689888,40.73624527,40.72953837,40.7153379,40.72405549,40.71450451,40.71173107,40.71219906,40.74238787,40.72903917,40.73047747,40.72580614,40.71269042,40.71782143,40.71739973,40.69794,40.6851443,40.73652889,40.728846,40.71850211,40.71559509,40.76340613,40.68539567,40.69363137,40.71602118,40.71622644,40.73291553,40.75510267,40.70717936,40.71605866,40.75172632,40.70834698,40.68900443,40.693261,40.75828065,40.73038599,40.73224119,40.694546087246,40.69331716,40.70862144,40.72243797,40.749156,40.73401143,40.735238,40.75797322,40.71494807,40.71273266,40.749717753,40.69221589,40.69760127,40.695065,40.72299208,40.72521311,40.680342423,40.68415748,40.69165183,40.68851534,40.71926081,40.72019576,40.72502876,40.739323,40.69512845,40.71076228,40.72066442,40.72228087,40.7158155,40.7047177,40.68753406,40.71291224,40.70224,40.69580705,40.68764484,40.69573398,40.770513,40.76584941,40.71754834,40.701907,40.72467721,40.72621788,40.74317449,40.74173969,40.68216564,40.6809833854,40.72779126,40.7262807,40.75255434,40.746647,40.70853074,40.72740794,40.74487634,40.76370739,40.75660359,40.76227205,40.74475148,40.75455731,40.75001986,40.7597108,40.76695317,40.751396,40.71285887,40.73587678,40.74691959,40.75934501,40.75513557,40.74395411,40.7652654,40.76344058,40.74345335,40.71286844,40.7457121,40.72110063,40.7451677,40.74394314,40.75640548,40.76030096,40.76019252,40.76669671,40.71260486,40.73935542,40.73223272,40.75500254,40.75038009,40.7462009,40.75066386,40.751551,40.74734825,40.76269882,40.73726186,40.73704984,40.76228826,40.744219,40.714211,40.73827428,40.73221853,40.74901271,40.73912601,40.76341379,40.7454973,40.7606597,40.72938685,40.7500727,40.768254,40.76087502,40.76009437,40.75206862,40.75714758,40.75594159,40.74765947,40.74290902,40.7575699,40.7714967105444,40.71893904,40.710451,40.74144387,40.74025878,40.71534825,40.7431155537649,40.736502,40.74444921,40.716887,40.7338121919663,40.76590936,40.70569254,40.71117444,40.7217000523561,40.739445,40.75022392,40.75929124,40.759107,40.7203677529846,40.67890679,40.6794268,40.6814598,40.6800105,40.682601,40.6823687,40.68402,40.68488,40.6851532,40.686312,40.6900815,40.6894932,40.6883337,40.69072549,40.69128258,40.69237074,40.6933982,40.69425403,40.69622937,40.69539817,40.69527008,40.69681963,40.70029511,40.69957608,40.7016657,40.7031724,40.70411791,40.70510918,40.70538077,40.70583339,40.70767788,40.70708701,40.70870368,40.70877084,40.7092482627616,40.70934,40.711863,40.71167351,40.71247661,40.71469,40.715143,40.71413311,40.7160751,40.7190095,40.71745169,40.7169811,40.71929301,40.71924,40.7248125644002,40.72079821,40.72179134,40.724055,40.72325,40.72311651,40.72557,40.72606,40.72708584,40.72906,40.73026,40.73232194,40.73266,40.73564,40.73555,40.74232744,40.74524768,40.7443632870669,40.74469738,40.74731,40.74708586,40.74718234,40.74966,40.75052534,40.75110165,40.75325964,40.7671284034954,40.76350532,40.76312584,40.77112927,40.766368,40.77282817,40.7711828754066,40.77140426,40.76500525,40.7612274,40.7763214218227,40.77677702,40.77862688,40.77573034,40.77801203,40.77565541,40.7728384,40.76873687,40.77314236,40.76663814,40.77518615,40.77163851,40.77492513,40.77896784,40.7801839724239,40.7734066,40.7770575,40.7757937668367,40.7805779901033,40.7796680900731,40.78720869,40.78499979,40.78524672,40.7785669,40.777507027548,40.77748046,40.7867947,40.78414472,40.698617,40.743,40.78275,40.7678008014813,40.7572456791173,40.7589848139963,40.7739139023812,40.686203,40.7589238637769,40.7314372408523,40.6942715,40.6803560840434,40.6923166071919,40.7505853470215,40.7277140777778,40.7270636334831,40.7295149622495,40.7882213,40.78141070019,40.78839,40.7806284,40.789622,40.778301,40.7901794809508,40.7779453,40.7857851,40.7921,40.7835016,40.7824541752799,40.6686627,40.686371,40.78813,40.6651468153379,40.7919557,40.7969347,40.6849894,40.668127,40.7811527642792,40.6662078,40.7941654,40.6861758,40.7859201,40.663779,40.68763155,40.7817212,40.6663181,40.7937704,40.6847514,40.6686273,40.7839636,40.666287,40.6831164,40.668603,40.7981856,40.6685455,40.7849032,40.67434,40.7877214,40.795,40.6829151,40.6725058,40.8013434,40.681990442707,40.6747055,40.6772744,40.787801,40.673635513415,40.7862586,40.6765304,40.6753274,40.6777748,40.7997568,40.679043,40.7894854155321,40.6751468387098,40.6773429,40.677236,40.6729679,40.7973721,40.7869946,40.6726724341095,40.668132,40.7680088930595,40.7746671,40.8008363,40.6711978,40.7691572,40.7829391,40.6740886,40.7781314,40.7904828,40.6751622,40.6703837,40.8021174,40.7922553,40.6728155,40.7724607,40.7727966,40.7689738,40.6750705,40.799484,40.7699426,40.7647185194434,40.6786115,40.773763,40.7903051,40.6777287,40.680611,40.804213,40.6787242,40.6809591,40.7934337,40.6828003,40.6830456,40.7892529,40.6812117,40.6794327,40.6769993,40.6763744,40.6783563,40.6763947,40.6746957,40.6726029815013,40.6902375,40.6705135,40.6704922,40.6704836,40.6790979972168,40.6867443,40.6864442,40.6849668,40.6853761,40.6827549,40.6809447234773,40.6793307,40.6776147,40.6750207,40.6792788,40.6802133,40.6843549,40.6859296,40.6610633719006,40.791976,40.7892105,40.6850680730818,40.7190789117956,40.718822,40.721319,40.7931348098666,40.6924182925785,40.7613298312481,40.7191557169604,40.7133522622288,40.7103685423523,40.7163803197356,40.7630259428052,40.7576322773944,40.7148515052625,40.7511838746328,40.7353670556054,40.7522709383741,40.7249467235942,40.742753828659,40.6570886666848,40.6851255951541,40.796879,40.79747,40.8005385,40.799139,40.797911,40.7945663,40.7923272,40.7949879,40.7974772,40.8006721,40.7989445,40.8014866,40.7954121,40.80295,40.8029263,40.805726,40.8013066,40.8045555,40.809725,40.8011939,40.8078316,40.802535,40.774645,40.7767,40.774591,40.7699176,40.7711528,40.808442,40.804372,40.7987859,40.7701477,40.7729,40.7774552,40.776165,40.7747878,40.7713937,40.8107922,40.7787185,40.8125511,40.78145,40.8114323,40.805159,40.804038,40.8082,40.6809741,40.802692,40.8067581,40.81,40.813358,40.8086249,40.81028506306,40.6804836,40.8120562,40.6791944,40.8143256,40.678045,40.795508,40.805973,40.801694,40.751047,40.75742,40.6794388,40.7576314,40.7531106,40.757186,40.7601853,40.7614376,40.7596276,40.7569332,40.6758324,40.7557327,40.676368,40.756913,40.7580583,40.6769694,40.76108,40.7628138,40.6741806,40.672695,40.6737236,40.6740123,40.6721683,40.6716493,40.6707767,40.6691783,40.7638753,40.6686744,40.7671863,40.7668,40.6679411,40.7659,40.7633589,40.761584,40.760339,40.6642406,40.7577284,40.7595701,40.7611488,40.6627059,40.763154,40.7647,40.6630619,40.7658346,40.74252,40.7682,40.7423737,40.7692475,40.7449067,40.7703743,40.745038,40.768692,40.7656251,40.7671,40.7485,40.7713615,40.7519071,40.7739825,40.80756,40.8109494,40.8025566,40.8094953477795,40.8038654,40.7546232402911,40.6832386546034,40.7428687731211,40.7631548191037,40.6979503156954,40.8143944379158,40.7518695142187,40.7230774906867,40.7435337324616,40.6664393068708,40.7201952143746,40.7239567849954,40.6775920693738,40.7014031725772,40.6758329439129,40.739448201304,40.7432268143217,40.799041392883,40.7133418427591,40.7640893235069,40.6999974843885,40.7224818863822,40.7751595343424,40.7636046779586,40.7437524099784,40.7284005945083,40.741459,40.735445,40.7380461424828,40.7296672939298,40.754691750226,40.7068420310133,40.7181696945421,40.7535992020056,40.7274642069239,40.7675487799971,40.7667405590595,40.7687620293096,40.7433660802702,40.7176619708399,40.6953569332022,40.758397,40.759125,40.752694,40.727243,40.720747,40.719383,40.735918,40.726378,40.7565127298495,40.72431,40.7475739589548,40.6906480708294,40.704508,40.710681,40.702997,40.70538,40.705614,40.697842,40.677027,40.707165,40.705517,40.709897,40.71323,40.71019,40.707174,40.702831,40.706237,40.713811,40.70539,40.704425,40.702013,40.700003,40.699304,40.7027,40.704876,40.703545,40.698568,40.698458,40.70838,40.75492,40.714193,40.69985,40.68186,40.7003,40.71687,40.671907,40.752269,40.74964,40.665816,40.702461,40.752474,40.763189,40.77485,40.734814,40.745686,40.761573,40.755293,40.71429,40.71773,40.72984,40.73396,40.69757,40.70106,40.70076,40.70099,40.6786,40.68139,40.68458,40.68565,40.68652,40.6882,40.68858,40.68663,40.69055,40.69122,40.69467,40.69385,40.69146,40.69329,40.69356,40.69545,40.69811,40.69543,40.69502,40.69905,40.69943,40.70108,40.69676,40.69671,40.69544,40.70636,40.70907,40.71401,40.70869,40.70686,40.716657,40.71882,40.72577,40.72158,40.73124,40.70166,40.70113,40.69714,40.69296,40.68929,40.68906,40.67945,40.693,40.692,40.697481,40.68281,40.6972,40.70068,40.70461,40.6988,40.69922,40.70555,40.69812,40.68822,40.7098,40.818299,40.69517,40.70577,40.69969,40.70413,40.70553,40.71246,40.70793,40.69047,40.698,40.75473,40.6831998817276,40.740983,40.7015734087379,40.70183,40.70863,40.763954,40.72084,40.72226,40.70998,40.70694,40.68989,40.6998714088299,40.732647,40.711444,40.70112,40.70408,40.709697,40.699569,40.783786,40.69178,40.810224,40.805701,40.807466,40.808484,40.810893,40.81014,40.81296,40.813539,40.81093,40.812735,40.814469,40.816576,40.817755,40.816234,40.816355,40.820003,40.805089,40.80262,40.800933,40.800425,40.801657,40.8190344,40.818215,40.819746,40.818477,40.804168,40.805559,40.807408,40.809619,40.808633,40.806896,40.82281,40.808891,40.811112,40.811675,40.812299,40.823498,40.822756,40.820036,40.816827,40.814383,40.814046,40.811314,40.826969,40.814232,40.815887,40.819609,40.822215,40.827212,40.820713,40.819823,40.81899,40.82188,40.829523,40.830476,40.817166,40.817802,40.824013,40.820302,40.81734,40.813135,40.805631,40.808384,40.802554,40.812191,40.806414,40.815484,40.813619,40.8169597103246,40.819783,40.821111,40.820877,40.820681,40.821294,40.814673,40.823168,40.824686,40.827305,40.825244,40.816124,40.827075,40.82831,40.829114,40.82923,40.812346,40.81449,40.817555,40.803399,40.825125,40.813224,40.819241,40.826406,40.826881,40.830663,40.830702,40.816402,40.81989,40.82057,40.831327,40.7639089,40.757284,40.7537022541911,40.7426847348757,40.825289,40.75461,40.77237,40.832081,40.832314,40.833303,40.834468,40.83618,40.835798,40.839278,40.84004,40.839137,40.839443,40.75863,40.842941,40.842173,40.84522,40.844044,40.846052,40.807347437082,40.848467,40.847305,40.847396,40.852252,40.848282,40.849972,40.835775,40.7597380525114,40.838191,40.78476,40.820089,40.823732,40.831444,40.83173,40.833909,40.83649,40.835334,40.839549,40.840536,40.84207,40.843965,40.823429,40.829797,40.830179,40.825716,40.83263,40.834263,40.839312,40.834015,40.826677,40.829608,40.834457,40.818212,40.823162,40.832812,40.837213,40.843264,40.84925,40.7250655101547,40.7427517964899,40.78294,40.79346,40.79558,40.80046,40.830262,40.6640798367816,40.7494985460252,40.74714,40.7924951949511,40.7955895410534,40.7886649912788,40.827883,40.825737,40.839142,40.837576,40.832057,40.831584,40.844075,40.812769,40.815077,40.816343,40.819701,40.824,40.823872,40.82696,40.824796,40.822545,40.818185,40.816126,40.813991,40.816567,40.818743,40.821075,40.821967,40.82895,40.832678,40.830471,40.82394,40.820578,40.827184,40.83545,40.833246,40.830529,40.839586,40.843079,40.84224,40.834124,40.832649,40.836274,40.82809,40.82441,40.84301,40.842675,40.83899,40.828975,40.828199,40.829896,40.825322,40.834857,40.838379,40.837119,40.831762,40.830051,40.832171,40.831998,40.839229,40.836733,40.839335,40.818154,40.83299,40.840683,40.827301,40.826303,40.85168,40.840484,40.83094,40.824811,40.83406,40.844811,40.83999,40.819999,40.824956,40.826706,40.841092,40.811892,40.831305492673,40.822351,40.838706,40.83196,40.82995,40.83171,40.835302,40.7258399679237,40.7400570856729,40.7419815999402,40.7103231,40.7541451926352,40.823061,40.822217,40.6962329712932,40.837037,40.839194,40.840494,40.8358771,40.756951,40.7417235109747,40.7647342000652,40.768333,40.762009,40.757334,40.752643,40.752149,40.821952,40.832164,40.7033668669587,40.8361791367748,40.8187256999012,40.836705668628,40.827629,40.752443,40.753091,40.767666,40.750181,40.754795,40.764496,40.769673,40.774306,40.752372,40.763422,40.755763,40.758057,40.760083,40.762507,40.753441,40.754164,40.754176,40.757525,40.771203,40.769219,40.776745,40.783956,40.785994,40.775415,40.709267,40.756265,40.7334239943708,40.73115,40.7319113232317,40.7641745201977,40.754139,40.765753,40.75574,40.772717,40.774798,40.77813,40.777112,40.772899,40.772092,40.768442,40.77028,40.768728,40.778089,40.73498,40.7278970140902,40.7261560498041,40.747968,40.778557,40.7590579541859,40.7653538038587,40.7596044713879,40.7730150829138,40.838315,40.7727682862883,40.756351,40.7725996921817,40.77977,40.763328,40.761294,40.76072,40.75388,40.755389,40.757357,40.776168,40.780478,40.784003,40.76817,40.770888,40.817245,40.782465,40.7654756924495,40.766824,40.751555,40.8272304996247,40.72769,40.7315393746407,40.723355979608,40.715118719965,40.7177981773783,40.7114713944693,40.7131070230591,40.666197,40.666168,40.660906,40.663493,40.662584,40.66016,40.659053,40.656633,40.65629,40.651654,40.653368,40.650739,40.648005,40.649037,40.651847,40.649681,40.648481,40.658029,40.648055,40.647718,40.643817,40.645074,40.644367,40.643546,40.662611,40.656986,40.657743,40.654098,40.649983,40.650176,40.642809,40.646037,40.642031,40.655278,40.652657,40.652512,40.643371,40.644862,40.646377,40.644512,40.649143,40.645921,40.642703,40.649292,40.642408,40.640831,40.638196,40.639859,40.639978,40.640493,40.635679,40.644743,40.639673,40.641269,40.638246,40.73127,40.71703,40.659490558939,40.654144,40.651354,40.646351,40.64744,40.659555,40.656326,40.655716,40.633385,40.659176,40.647105,40.647379,40.648169,40.651173,40.642622,40.637033,40.7317347858835,40.7327588704509,40.8190058180656,40.659945,40.652563,40.63766,40.6825642575969,40.854788,40.665507,40.651566,40.852538,40.852253,40.856906,40.857994,40.861382,40.867505,40.862562,40.862638,40.863211,40.86788,40.871094,40.6447189576357,40.639421,40.8564873352358,40.857157813919,40.86012,40.862058,40.8589044753841,40.863124,40.867357,40.868846,40.861281970751,40.866141,40.8698986619405,40.8693246564009,40.8730545893709,40.851113,40.859166,40.872412,40.864632,40.672784,40.6817781092876,40.671409,40.726330859717,40.6893952,40.673746,40.6854240099702,40.65482,40.640125,40.657265,40.8408960319304,40.855331,40.660079,40.649145,40.846011,40.845505,40.846465,40.84741,40.848177,40.850121,40.851747,40.848793,40.853686,40.858472,40.87139,40.6870657987591,40.673134,40.848354,40.850036,40.847798,40.853646,40.85501,40.856302,40.855653,40.858498,40.676757,40.851788,40.854947,40.855156,40.853929,40.861669,40.861915,40.658489,40.646475,40.6424313970609,40.85556,40.847746,40.85834,40.86156,40.86295,40.86288,40.86294,40.86659,40.86448,40.86389,40.86767,40.86648,40.86945,40.87444,40.87002,40.86813,40.86814,40.87207,40.849629,40.8496401,40.856987,40.86008,40.87069,40.86557,40.87387,40.87307,40.87142,40.87382,40.87812,40.87656,40.87935,40.88226,40.846879,40.85322,40.7029693415527,40.702709,40.700119,40.693534,40.690065,40.6940096486599,40.698477,40.87156,40.8704956,40.850535,40.7007630832615,40.86571,40.860814,40.861748,40.86874,40.875531,40.87704,40.8802945,40.8740704,40.84552,40.8549,40.877964,40.80722,40.6882551659801,40.8462759292195,40.85834,40.8558,40.7013344806699,40.8604244,40.8604787,40.8649213,40.8660052,40.873265,40.859532,40.8714452068712,40.8271338042356,40.866899,40.867,40.8684871,40.850885,40.73988840859,40.7529728216068,40.7601773953778,40.7480331942877,40.7576723402504,40.7823226073088,40.8421023610217,40.7122195800905,40.7617122791067,40.8238836644176,40.668757,40.663657,40.7046966789497,40.7800133661056,40.7733675028434,40.6873724765072,40.651745,40.6870023129262,40.6781838797765,40.853827,40.7275580733585,40.74133,40.747370756468,40.750756,40.752049,40.68917,40.865364,40.7551671907214,40.7700301025504,40.7051480769839,40.6789700704757,40.7577693544831,40.7036617052413,40.7059451327088,40.7080658238065,40.72231,40.7321389628738,40.7099180692153,40.7173184038558,40.7197863545282,40.7273786932322,40.7233468321802,40.7251285241158,40.7241294409009,40.7285474502394,40.730310710009,40.7313930336415,40.7247900774634,40.7297080564499,40.7133215120819,40.7248612225482,40.72054,40.7251173442239,40.7064107552361,40.7375299330107,40.765959181658,40.7496526847285,40.72323,40.7197920901383,40.7484802344858,40.7459107283428,40.7332086265224,40.7371691936988,40.7406931773304,40.754818,40.73795,40.642501,40.71759894981,40.7537733683604,40.7386609142855,40.752762088742,40.717411,40.790586067792,40.854123869116,40.7405642363395,40.7065636746709,40.8558903060389,40.82123860172,40.7975207812476,40.7344356406946,40.7018885891337,40.7199611811714,40.8670940626815,40.8126361676932,40.7153416204245,40.71503,40.8567080183126,40.6609377949317,40.7356591481923,40.7386634546531,40.7402135688492,40.74283,40.7443653191867,40.7465376197805,40.7471482490328,40.74408,40.742218349961,40.7408212078232,40.7403466808719,40.7378169988119,40.7382493734594,40.7421563682773,40.74562,40.74431,40.7453468258098,40.7469267568738,40.7435402734287,40.7398599569916,40.7378723795054,40.7394138749841,40.7411199446815,40.7494782218348,40.7500164042593,40.7500976820948,40.746228746942,40.7448062877224,40.7434975983697,40.8530445586899,40.7424,40.74086,40.73737,40.7429,40.74451,40.74732,40.74462,40.745502,40.74679,40.74324,40.74193,40.74891,40.74838,40.75326,40.75048,40.75098,40.74549,40.74521,40.74501,40.74261,40.7471,40.74958,40.75201,40.74893,40.7469450452452,40.75053,40.74589,40.74446,40.74334,40.7428,40.74179,40.74288,40.7448,40.74091,40.7388,40.73577,40.73568,40.73394,40.7493722738996,40.7261,40.7343116627657,40.82182,40.8616988350786,40.8301283948092,40.7717171052083,40.71334,40.71301,40.7107,40.71119,40.70886,40.70067,40.69662,40.69338,40.70055,40.70311,40.70204,40.70264,40.70117,40.70575,40.71032,40.71225,40.71798,40.71921,40.71693,40.71988,40.72098,40.72235,40.72249,40.72403,40.72155,40.72368,40.72353,40.73028,40.70389,40.8531875886197,40.715922327095,40.7168853849537,40.7075188830923,40.7179085273406,40.71832,40.70809,40.71453,40.7103612992258,40.69465,40.6938,40.68995,40.68973,40.68834,40.68927,40.68713,40.68454,40.68282,40.68487,40.68814,40.68705,40.68609,40.68374,40.68273,40.68143,40.68494,40.68452,40.68491,40.68158,40.67922,40.67853,40.68018,40.67872,40.67854,40.67709,40.67621,40.6776,40.67428,40.67077,40.67234,40.67514,40.67955,40.68078,40.67412,40.67113,40.67297,40.67686,40.6767,40.67202,40.6747,40.67717,40.67372,40.67261,40.67095,40.67639,40.67404,40.67128,40.66852,40.67423,40.67313,40.67293,40.6791185608216,40.68012,40.67242,40.6705,40.67607,40.66992,40.67486,40.67374,40.67522,40.63556,40.72558,40.686722,40.68012,40.68044,40.67923,40.6814658848122,40.67308,40.66959,40.67524,40.66929,40.67351,40.67015,40.66591,40.7014046341064,40.690687586143,40.7615304515811,40.690434,40.7413272,40.6557221679716,40.6886263,40.6910363748993,40.66846,40.6698975792422,0,40.6756,40.7564035232725,40.68332,40.7540822061557,40.6716,40.67568,40.66598,40.8351227990364,40.7535468186707,40.676513,40.6919925157634,40.6523035730306,40.7037816735483,40.72419,40.67738,40.67669,40.69715,40.6529282936381,40.6878809396128,40.7743181132739,40.67154,40.69953,40.67686,40.66639,40.66626,40.6667,40.66559,40.66481,40.67251,40.67972,40.7298483034653,40.66688,40.66732,40.66403,40.66318,40.66127,40.66967,40.66939,40.66876,40.66619,40.66035,40.66026,40.65798,40.65563,40.65815,40.65519,40.65686,40.6595,40.65707,40.65549,40.66104,40.65794,40.66184,40.66067,40.66227,40.66178,40.65791,40.66124,40.65666,40.756764750865,40.70497,40.70229,40.69559,40.71237,40.6605,40.66288,40.66155,40.66343,40.66034,40.739152727637,40.71435,40.71888,40.70929,40.72897,40.66811,40.65969,40.69723,40.71391,40.65808,40.71484],[-74.0496915578842,-74.0379770100117,-74.0271502733231,-74.0459525585174,-74.05099,-74.0384115278721,-74.0351110696793,-74.033540636301,-74.0364857,-74.043845,-74.02658,-74.0836394,-74.0337589,-74.03097,-74.034234,-74.0243527293205,-74.042817056179,-74.0710607171059,-74.03332,-74.066921,-74.0575736,-74.0428841114044,-74.071261882782,-74.0277805924416,-74.0499678254128,-74.0714550018311,-74.0641943,-74.029127061367,-74.0354826,-74.0376833081245,-74.0393,-74.0322330594063,-74.051788633,-74.050443636,-74.0400409698486,-74.047726625,-74.0416637063026,-74.0404433012009,-74.0625,-74.0424120426178,-74.0335519,-74.0808427333832,-74.0316,-74.04309,-74.0324530005455,-74.0524783,-74.0867006778717,-74.0784059464931,-74.030376970768,-74.0385255217552,-74.03571,-74.0789,-74.0439909,-74.0358647704124,-74.0286033600569,-74.0676221251488,-74.0321082,-74.0628585219383,-74.0269886702299,-74.0595030784607,-74.0506564,-74.046304543,-74.044247311,-74.0572714805603,-74.0369041264057,-74.0719592571259,-74.0557013,-74.0469637513161,-74.0240201354027,-74.0503889322281,-74.0487903356552,-74.0389144420624,-74.0303045511246,-74.042521,-74.0666109323502,-74.0345008671284,-74.0644370019436,-74.0281990170479,-74.03805095,-74.0455716848373,-73.99392888,-74.00666661,-74.00016545,-73.97632328,-74.00149746,-73.97803415,-73.95928168,-74.00674436,-74.00297088,-73.99337909,-73.98068914,-74.0091059,-73.98085795,-73.997249007225,-74.00910627,-73.9816324043,-73.99612349,-73.99810231,-73.97032517,-73.99456405,-73.97738662,-74.01043382,-74.00681753,-73.99548059,-73.99383605,-73.99994661,-74.00552427,-73.971878855,-73.99379025,-73.99014892,-73.98713956,-74.00859207,-73.9813018,-73.97493121,-73.973736,-73.96536851,-73.97703874,-74.00483091,-74.00771779,-74.0090009,-73.99565293,-73.99480012,-73.99852205,-73.99800419,-74.00247214,-73.96885458,-74.01234218,-74.01167797,-73.98362464,-73.9737299,-74.00731853,-73.99147535,-73.97574813,-73.98765428,-73.99973337,-73.97178913,-73.96563307,-73.98476437,-73.97371465,-74.0026376103,-73.99074142,-73.95881081,-73.984844,-73.9910262823105,-73.9957214,-73.99293911,-73.986923,-73.9796772,-73.98368779,-73.97793172,-73.99949601,-74.01361706,-73.96724467,-73.98990025,-73.99851193,-73.98802084,-73.989111,-73.96751037,-74.00670227,-74.0065509080887,-73.98185424,-74.009447,-74.005549,-73.98971773,-73.98631746,-73.981013,-73.98473765,-73.98426726,-74.01658354,-74.00965965,-74.00562789,-73.99193043,-73.97948148,-73.99726235,-73.99404649,-73.99906065,-73.97422494,-73.98776323,-73.97628939,-73.98016555,-73.96986848,-73.95380904,-74.00618026,-74.008591,-73.98329859,-73.9870295,-73.97722479,-73.97431458,-73.96223558,-73.99974372,-73.98261206,-74.00711384,-73.97498696,-74.00887308,-73.99190759,-73.98753523,-74.01713445,-73.96023854,-73.968896,-73.97069431,-74.00214988,-74.00026394,-73.9580136537552,-73.95381995,-74.00722156,-74.00566443,-73.9916,-74.00293877,-74.000271,-73.96603308,-74.00234482,-74.0046073,-74.002950346,-73.9842844,-73.99344559,-73.987167,-73.97995466,-73.97768752,-73.9557689392,-73.96922273,-73.9999786,-73.9647628,-73.98178024,-73.98997825,-73.99069656,-74.008119,-73.99595065,-73.99400398,-73.98517977,-73.97668709,-73.99422366,-74.00926027,-73.97265183,-74.01020234,-73.982578,-73.97355569,-73.96968902,-73.97129668,-73.988038,-73.98690506,-74.01322069,-74.013942,-73.98783413,-73.98379855,-74.00366443,-73.99415556,-73.95399026,-73.9500479759,-73.98564945,-73.98978041,-73.97282625,-73.993915,-73.96408963,-73.98142006,-73.99529885,-73.9851615,-73.9979009,-73.98788205,-73.99915362,-73.96592976,-73.96905301,-73.97402311,-73.98169333,-74.005226,-73.96590294,-73.98205027,-74.00451887,-73.96759673,-73.98658032,-73.99144871,-73.98192338,-73.98268129,-74.00004031,-73.95698119,-73.98194829,-73.9919254,-73.98683077,-73.97966069,-73.9900262,-73.99884222,-73.9912551,-73.99061728,-73.96264403,-73.99931783,-73.98889957,-73.98014437,-73.98338988,-73.98855723,-74.00176802,-73.993934,-73.99723551,-73.99301222,-73.99238967,-73.99009296,-73.98336183,-73.97121214,-73.981095,-73.98751968,-73.98165557,-73.98848395,-73.97973776,-73.99667444,-74.00197139,-73.98042047,-73.97772429,-73.99839279,-73.988639,-74.00277668,-73.99461843,-73.96784384,-73.97207836,-74.0021163,-73.98490707,-73.97706058,-73.99098507,-73.9904603362083,-73.99266288,-73.960876,-73.97536082,-73.98409214,-73.96024116,-73.9821535348892,-73.97809472,-73.98303529,-73.963198,-73.9805442094803,-73.97634151,-74.01677685,-73.99682619,-74.002381414175,-73.976806,-73.97121414,-73.98859651,-73.959223,-73.9616507291794,-73.94142771,-73.9298911,-73.934903,-73.938475,-73.938037,-73.944118,-73.94977,-73.96304,-73.94111,-73.935775,-73.947915,-73.942061,-73.950916,-73.95133465,-73.9452416,-73.93705428,-73.939877,-73.94626915,-73.94371094,-73.94954908,-73.95238108,-73.93756926,-73.95032283,-73.94708417,-73.9437303,-73.940636,-73.94818595,-73.94407279,-73.94976519,-73.94644578,-73.94016171,-73.95796783,-73.9448625,-73.95095259,-73.9606314897537,-73.95608,-73.944024,-73.95141312,-73.94100005,-73.95739,-73.944507,-73.95234386,-73.952029,-73.95852515,-73.95850939,-73.94485918,-73.94500379,-73.95242,-73.947526216507,-73.95484712,-73.9504154,-73.955736,-73.94308,-73.95212324,-73.94434,-73.95621,-73.95299117,-73.95779,-73.95394,-73.9550858,-73.95826,-73.95866,-73.95284,-73.95411749,-73.94733276,-73.9558732509613,-73.93540375,-73.95451,-73.94977234,-73.9432635,-73.9521,-73.94594845,-73.94073717,-73.94335788,-73.9622461795807,-73.97109243,-73.96526895,-73.95772297,-73.971518,-73.96685276,-73.9640942215919,-73.9535166,-73.95818491,-73.96094022,-73.9642739295959,-73.9590097,-73.95772073,-73.9567526,-73.95407149,-73.95068615,-73.94989233,-73.96119945,-73.95856158,-73.95348296,-73.94446054,-73.98261428,-73.98266566,-73.97374737,-73.9772853255272,-73.97782542,-73.97898475,-73.9762057363987,-73.9856243133545,-73.9809304475784,-73.98128127,-73.97283406,-73.97667321,-73.97754961,-73.9888858795166,-73.98288594,-73.977112,-73.98362492,-73.941342,-73.93561,-73.97137,-73.9659208059311,-73.978059142828,-73.9937996864319,-73.9543953537941,-73.944694,-73.9622622728348,-73.9949034154415,-73.9923272,-73.9476791024208,-74.0148657560349,-73.9946848154068,-74.011295735836,-73.9966213703155,-73.990752696991,-73.97041561,-73.9559590816498,-73.9747,-73.9521667,-73.97757,-73.9488134,-73.9728891849518,-73.946041,-73.957481,-73.9739,-73.955327,-73.9489196240902,-73.97988067,-73.99383324,-73.95206,-73.9763760566711,-73.968087,-73.9643412291,-73.99440329,-73.98377641,-73.9496304094791,-73.98199886,-73.974124,-73.99645295,-73.94860294,-73.98396846,-74.0016256,-73.94594,-73.9854617,-73.971888,-73.99917254,-73.98700053,-73.9471673,-73.98895053,-73.99785267,-73.9904394,-73.9605909006,-73.99333264,-73.950503,-74.00194698,-73.94728331,-73.9645,-73.99318208,-74.00494695,-73.9711457439,-73.9907902479172,-74.0075572,-73.98282002,-73.953559,-74.0119555592537,-73.94552579,-73.97846879,-74.0100698,-74.0094613,-73.9621128676,-74.011169,-73.9524292945862,-73.9752320945263,-74.01275056,-74.015665,-73.97087984,-73.97041192,-73.94164802,-74.0087952464819,-73.97363831,-73.9684528112411,-73.98470567,-73.9664492472,-73.97484126,-73.96703464,-73.9786517,-73.9787282,-73.96069399,-73.95033068,-73.9814832,-73.97839676,-73.9681805305,-73.95249933,-73.98352355,-73.9468208,-73.95577801,-73.95482273,-73.98775226,-73.955613,-73.96060712,-73.962220698595,-73.99037292,-73.96222088,-73.94755757,-73.99364123,-73.99475825,-73.96699104,-73.99599099,-73.99905709,-73.94945003,-73.99990419,-74.00348559,-73.93956237,-74.00860912,-74.00785041,-74.00647134,-74.00324957,-74.00014502,-73.99869893,-73.99785768,-73.9898300170898,-73.99203074,-73.98876585,-73.98541675,-73.98208968,-73.9876547455788,-73.99063168,-73.98759104,-73.98620772,-73.98302136,-73.98258555,-73.9756733179092,-73.97519523,-73.97324283,-73.97111473,-73.98154004,-73.98432695,-73.98901629,-74.00242364,-73.9794525504112,-73.945993,-73.94370784,-73.9779075980186,-73.9422369003296,-73.99596,-74.010065,-73.9770036935806,-73.989494740963,-73.9798200130463,-73.9488539099693,-73.9491033554077,-73.9470595121384,-73.9482128620148,-73.9720952510834,-73.9693057537079,-74.0112233161926,-73.9713871479034,-73.9879739284515,-73.98770570755,-74.0016585588455,-74.0074735879898,-74.0087020397186,-74.0253531932831,-73.937261,-73.93504,-73.9419949,-73.9389152,-73.9423,-73.9362541,-73.9383,-73.9333349,-73.9311847,-73.9349,-73.944846,-73.9442507,-73.9441232,-73.942954,-73.9379,-73.936322,-73.9398167,-73.9396861,-73.953149,-73.9500739,-73.949373,-73.9532423,-73.923706,-73.927631,-73.918544,-73.9184057,-73.9170074,-73.9452087,-73.951475,-73.9523,-73.9120938,-73.916142,-73.9225403,-73.9153175,-73.9125551,-73.9077436,-73.9430681,-73.9145645,-73.9492286,-73.9183302,-73.9518776,-73.954692,-73.945925,-73.9641,-73.9710097,-73.96295,-73.9607082,-73.9551508,-73.956461,-73.9596214,-73.9573645591736,-73.9646795,-73.9612547,-73.9587903,-73.9590255,-73.962408,-73.941606,-73.964928,-73.957145,-73.93797,-73.945133,-73.9680438,-73.9391224,-73.9279917,-73.932719,-73.9362726,-73.9411265,-73.9321455,-73.9262231,-73.9561677,-73.9236611,-73.952918,-73.921631,-73.9242751,-73.96579,-73.930562,-73.9342862,-73.9564947,-73.954131,-73.9631611,-73.9671457,-73.9609,-73.9631145,-73.9576801,-73.9554162,-73.9364848,-73.9618148,-73.9373554,-73.9347774,-73.9588,-73.930819,-73.9286471,-73.925921,-73.9222427,-73.9574686,-73.9166368,-73.9142678,-73.9170071,-73.9569115,-73.920827,-73.9240312,-73.9538746,-73.9265474,-73.948852,-73.9322662,-73.9566,-73.9354504,-73.9534573,-73.9286078,-73.957539,-73.9249574,-73.9136695,-73.9169858,-73.941275,-73.9246145,-73.9479119,-73.9309134,-73.939182,-73.9634,-73.9490782,-73.9477649331093,-73.9559308,-73.9951676130295,-73.9659959077835,-73.9891862869263,-73.9398550987244,-73.970775604248,-73.9532473683357,-73.933492898941,-73.9858362078667,-74.0036755800247,-73.9605563879013,-74.0103006362915,-73.9498436450958,-73.955637216568,-73.9867267012596,-74.0147262811661,-74.0050703287125,-73.9744978398085,-73.9664947986603,-74.0093551576138,-73.9106512069702,-73.9744012802839,-73.9592193067074,-73.9891869574785,-73.9891795814037,-73.941764831543,-73.9996878057718,-73.983293,-73.99431,-73.996429592371,-73.9806796610355,-73.9974018931389,-73.9544353965357,-73.9552013576031,-73.9379560947418,-73.9795041829348,-73.9209334552288,-73.9790689945221,-73.9584079384804,-73.95960688591,-73.948800265789,-73.9934402704239,-73.98255,-73.962658,-74.002353,-73.976831,-73.986274,-73.991479,-74.000939,-74.000472,-73.9295748621225,-74.00473,-73.9788007736206,-73.9574617892504,-73.9351,-73.93372,-73.92997,-73.92535,-73.92153,-73.926241,-73.9865,-73.923711,-73.93936,-73.94008,-73.93894,-73.93734,-73.93581,-73.9333,-73.933871,-73.93515,-73.92976,-73.92836,-73.923769,-73.92834,-73.923044,-73.92095,-73.919911,-73.917775,-73.918877,-73.997178,-74.00495,-73.98455,-73.996732,-73.97141,-73.959432,-73.991581,-74.03281,-73.993612,-73.982079,-73.98805,-73.956934,-73.986842,-73.939991,-73.978434,-73.9342,-73.992085,-74.005141,-73.972628,-73.967641,-73.93323,-73.94051,-73.94839,-73.95204,-73.93098,-73.93318,-73.93641,-73.93921,-73.90369,-73.90756,-73.90925,-73.91564,-73.91321,-73.90798,-73.91227,-73.9168,-73.91181,-73.91693,-73.90663,-73.90974,-73.92146,-73.92852,-73.92524,-73.91164,-73.90904,-73.9196,-73.92825,-73.91516,-73.91337,-73.9179,-73.92302,-73.92807,-73.93223,-73.91945,-73.92157,-73.92793,-73.92587,-73.92851,-73.93637,-73.93948,-73.94173,-73.94546,-73.95161,-73.92754,-73.91422,-73.91566,-73.91605,-73.90951,-73.90506,-73.90474,-73.90824,-73.92617,-73.935877,-73.90623,-73.90674,-73.90742,-73.91054,-73.9007,-73.89795,-73.90245,-73.90271,-73.91966,-73.91727,-73.960405,-73.90311,-73.91292,-73.9022,-73.90737,-73.9096,-73.91873,-73.91092,-73.923511,-73.9127,-73.93367,-73.9116664230824,-74.001702,-73.9087629318237,-73.90625,-73.91497,-73.9646,-73.94844,-73.93889,-73.91116,-73.90632,-73.91458,-73.9117187261581,-73.99011,-74.014847,-73.93039,-73.90408,-73.907856,-73.979827,-73.981687,-73.97877,-73.937195,-73.925177,-73.927107,-73.928803,-73.927311,-73.93973,-73.941878,-73.94521,-73.921606,-73.923697,-73.924963,-73.927987,-73.92965,-73.948222,-73.954295,-73.959089,-73.918889,-73.9174,-73.913863,-73.911034,-73.909513,-73.956156,-73.950988,-73.951819,-73.947568,-73.911545,-73.914718,-73.91924,-73.917875,-73.916124,-73.911837,-73.937413,-73.91081,-73.914932,-73.917037,-73.92037,-73.94386,-73.951346,-73.921411,-73.917338,-73.915368,-73.91186,-73.907729,-73.949738,-73.903927,-73.911918,-73.916071,-73.914688,-73.942722,-73.911759,-73.912411,-73.90202,-73.907521,-73.944279,-73.939929,-73.914737,-73.905203,-73.954743,-73.903944,-73.922962,-73.909235,-73.934077,-73.923604,-73.933509,-73.937838,-73.936085,-73.935856,-73.939336,-73.9422959089279,-73.936521,-73.935971,-73.939249,-73.945144,-73.947868,-73.91839,-73.955857,-73.951947,-73.951989,-73.947257,-73.908116,-73.945909,-73.942924,-73.950426,-73.936996,-73.946168,-73.936153,-73.957163,-73.919763,-73.941616,-73.930605,-73.941057,-73.937948,-73.941427,-73.941323,-73.936371,-73.919549,-73.908351,-73.917579,-73.946665,-73.9477213,-73.9536,-73.9586520195007,-73.9867132902145,-73.936232,-73.99177,-73.99005,-73.942386,-73.94102,-73.939326,-73.939865,-73.939789,-73.937496,-73.945446,-73.942939,-73.941409,-73.937044,-73.97513,-73.938631,-73.935111,-73.940493,-73.933651,-73.937648,-73.908097743988,-73.936064,-73.933291,-73.931205,-73.937854,-73.941343,-73.938423,-73.9434,-73.9781161397696,-73.936085,-73.969862,-73.928947,-73.919379,-73.926226,-73.922394,-73.92112,-73.918316,-73.9154,-73.913004,-73.919228,-73.926075,-73.920999,-73.924689,-73.931015,-73.928747,-73.915585,-73.925101,-73.917641,-73.922423,-73.908863,-73.929327,-73.921461,-73.928381,-73.955277,-73.923267,-73.929372,-73.908345,-73.904867,-73.93022,-73.9751583337784,-73.9847157150507,-73.93077,-73.92389,-73.91906,-73.92404,-73.923391,-73.9602512866668,-73.9772920311316,-73.97113,-73.9641706646307,-73.9618840813637,-73.966800570488,-73.927111,-73.927311,-73.925961,-73.910489,-73.927421,-73.9149,-73.917256,-73.901583,-73.899939,-73.896447,-73.901311,-73.91089,-73.908699,-73.907451,-73.90242,-73.901824,-73.894143,-73.891559,-73.8855,-73.888161,-73.890247,-73.895069,-73.896752,-73.90521,-73.905158,-73.904556,-73.894025,-73.888271,-73.893721,-73.90153,-73.896599,-73.894717,-73.900277,-73.900216,-73.8985,-73.88955,-73.885272,-73.884308,-73.91288,-73.92818,-73.91172,-73.908544,-73.9109,-73.911259,-73.903719,-73.907618,-73.887729,-73.903743,-73.905838,-73.902185,-73.896853,-73.892103,-73.889686,-73.892686,-73.899047,-73.887931,-73.886445,-73.925294,-73.94592,-73.915073,-73.896372,-73.898751,-73.94186,-73.917946,-73.91125,-73.916407,-73.92243,-73.912042,-73.90549,-73.897263,-73.891677,-73.888719,-73.892317,-73.904192,-73.917447924614,-73.926907,-73.927034,-73.91956,-73.898802,-73.90208,-73.895133,-74.0076532959938,-74.0052741765976,-74.0083158016205,-74.0043228,-73.9960889518261,-73.941928,-73.928939,-73.9914205670357,-73.890413,-73.888587,-73.911479,-73.8931428,-73.982631,-73.9780926704407,-73.9919435977936,-73.992573,-73.996975,-73.974235,-73.974996,-73.989539,-73.888546,-73.949702,-74.007867872715,-73.9073014632277,-73.8886249065399,-73.9260886609554,-73.886659,-73.929737,-73.920603,-73.910963,-73.919998,-73.917014,-73.904632,-73.906018,-73.908335,-73.925384,-73.914142,-73.912715,-73.909831,-73.907107,-73.902534,-73.912402,-73.908906,-73.900318,-73.901614,-73.903865,-73.901001,-73.906558,-73.916894,-73.915098,-73.900063,-74.013247,-73.964179,-74.0085149556398,-74.00887,-74.008769094944,-73.9158399403095,-73.919543,-73.90676,-73.903427,-73.906127,-73.903787,-73.90842,-73.902382,-73.896849,-73.895166,-73.893531,-73.893675,-73.890745,-73.899558,-74.00697,-74.0053626894951,-73.9951018989086,-73.996637,-73.919046,-73.9189754426479,-73.9398631453514,-73.9271441102028,-73.9111903309822,-73.912604,-73.9274364709854,-73.936515,-73.9326627552509,-73.923162,-73.908782,-73.909562,-73.910989,-73.914952,-73.911517,-73.904726,-73.910485,-73.912212,-73.912297,-73.896293,-73.889914,-73.938787,-73.914527,-73.9181157946587,-73.930486,-73.915026,-73.9176557959763,-73.990993,-73.9853024482727,-73.9886498451233,-73.9841705560684,-73.9931613206863,-73.9867260307074,-73.9944635331631,-73.992466,-73.995549,-73.983074,-73.991007,-73.995554,-73.990974,-73.98854,-73.983864,-73.977335,-73.981231,-73.976291,-73.977739,-73.979342,-73.97673,-73.965248,-73.967829,-73.97058,-73.989605,-73.972432,-73.973663,-73.977433,-73.979681,-73.984276,-73.986418,-73.998623,-73.998194,-74.001141,-74.001131,-74.005144,-74.015606,-73.979239,-73.980963,-73.981073,-74.003101,-74.002356,-74.008906,-74.011884,-74.014531,-74.023087,-74.021506,-74.012384,-74.005708,-74.009441,-74.020105,-74.013318,-74.010996,-74.013821,-74.019776,-74.02324,-74.02564,-74.020005,-74.003754,-74.008957,-74.017651,-74.024714,-73.98849,-74.00925,-73.980139195919,-74.00422,-74.007168,-74.009271,-74.018846,-73.995068,-74.009627,-74.006664,-74.016562,-74.006584,-74.004483,-74.000911,-74.000057,-74.011405,-74.016866,-74.022141,-73.9612390102593,-73.9958167076111,-73.9447689056396,-73.977504,-73.972573,-74.01782,-73.9798977971077,-73.929513,-73.993037,-73.972212,-73.93441,-73.931308,-73.935662,-73.932173,-73.925591,-73.926363,-73.922661,-73.92006,-73.920827,-73.919685,-73.911503,-73.9745146036148,-74.026823,-73.9329698681831,-73.927173614502,-73.928489,-73.929719,-73.9230939745903,-73.926994,-73.92936,-73.931537,-73.921417593956,-73.922648,-73.9207631349564,-73.9151975512505,-73.9183719456196,-73.928808,-73.933872,-73.912807,-73.918598,-73.979826,-73.9798897504807,-74.001328,-73.9861688017845,-73.9995126,-73.985649,-73.9912777394056,-73.973217,-74.015726,-73.974165,-73.9397209882736,-73.937878,-73.998633,-74.009486,-73.919637,-73.914311,-73.903869,-73.911359,-73.916082,-73.910765,-73.908964,-73.903178,-73.912498,-73.90266,-73.914318,-74.0167558512167,-73.969106,-73.918389,-73.912785,-73.901883,-73.908731,-73.910751,-73.907302,-73.905528,-73.89637,-73.983262,-73.916418,-73.916661,-73.91278,-73.898385,-73.898589,-73.894831,-73.985543,-74.026081,-74.0255355834961,-73.89615,-73.922079,-73.91008,-73.91219,-73.90741,-73.90316,-73.90108,-73.89794,-73.89522,-73.89246,-73.89286,-73.89042,-73.89148,-73.89186,-73.88565,-73.88412,-73.88145,-73.88459,-73.919205,-73.9161206,-73.898237,-73.90079,-73.90678,-73.88807,-73.89533,-73.88971,-73.88839,-73.88661,-73.89192,-73.88366,-73.88534,-73.88702,-73.907342,-73.90546,-73.9846909046173,-73.99253,-73.9862,-73.981909,-73.978776,-73.9946512877941,-73.98384,-73.89714,-73.8818756582,-73.901318,-73.9886981248856,-73.90857,-73.902541,-73.89105,-73.89657,-73.8863864831,-73.88943,-73.8860653648,-73.8833650931,-73.91722,-73.90281,-73.8847550291,-73.9418,-73.9954519271851,-73.9093127846718,-73.90626,-73.89956,-73.9847123622894,-73.9093359997,-73.9057169936,-73.9024238,-73.904254892,-73.906646,-73.913303,-73.8928963243961,-73.9227358996868,-73.901942,-73.8857764,-73.8884559781,-73.906469,-73.9895859360695,-73.9873489737511,-73.9848679304123,-73.973827958107,-73.9076994359493,-73.9598751068115,-73.9422395825386,-74.0104722976685,-73.9865510165691,-73.8974027708582,-73.966438,-73.963014,-74.0080341696739,-73.9066761732101,-73.9138256013393,-73.9817605912685,-73.975988,-73.9766496419907,-74.0170168876648,-73.920765,-73.955058529973,-73.93616,-73.9477729797363,-73.978326,-73.979635,-73.9886,-73.92791,-74.0005990862846,-73.9819684624672,-73.9707809686661,-73.9785526692867,-73.9792943000793,-74.0131813287735,-74.0132188796997,-74.0135595202446,-74.0106,-74.0036380290985,-73.9916110038757,-73.9906775951385,-73.9787162840366,-73.988408446312,-73.9826591312885,-73.9813166856766,-73.9790126681328,-73.981759250164,-73.9804717898369,-73.9828670024872,-73.9843006432056,-73.9865979552269,-73.9900968968868,-73.9921313524246,-73.9949,-73.999304920435,-74.0055973827839,-74.0055893361568,-73.9831352233887,-73.9952078461647,-74.00314,-74.0052238852195,-73.9825558662415,-73.9980711042881,-73.9756813647,-73.9812254905701,-73.9816063642502,-73.988154,-73.98509,-74.006055,-74.0158796310425,-73.9993759989738,-73.9898729324341,-73.9928045870511,-73.999573,-73.941957950592,-73.8993222266436,-73.9985257387161,-73.9683187007904,-73.9270824193954,-73.9173299074173,-73.9489397406578,-73.9379078149796,-74.0108987689018,-74.0084432065487,-73.9172950387001,-73.9292496442795,-73.9386507868767,-74.01246,-73.9026528596878,-73.986804485321,-73.9347884058952,-73.9409380406141,-73.9353704452515,-73.9321,-73.9317239820957,-73.9321584999561,-73.9290243387222,-73.92901,-73.929351568222,-73.9314718544483,-73.9288607239723,-73.9302407205105,-73.9273747801781,-73.9266264438629,-73.92402,-73.92601,-73.9219419658184,-73.9208248257637,-73.9243519306183,-73.9240032434464,-73.9226406812668,-73.921319693327,-73.9210367202759,-73.918264657259,-73.9154094457626,-73.913497030735,-73.9161631464958,-73.9172896742821,-73.9186052978039,-73.9183062314987,-73.91808,-73.91708,-73.91803,-73.91395,-73.91412,-73.91197,-73.91143,-73.909887,-73.90893,-73.908,-73.90913,-73.90899,-73.90699,-73.90585,-73.90513,-73.90799,-73.90605,-73.90462,-73.9036,-73.903,-73.9028,-73.90256,-73.89986,-73.89981,-73.8965025544167,-73.8977,-73.89915,-73.89764,-73.89903,-73.89584,-73.89564,-73.89283,-73.89377,-73.90273,-73.90338,-73.90184,-73.90387,-73.90128,-73.8973876833916,-73.90917,-73.9837253093719,-73.95353,-73.9185570180416,-73.886302113533,-73.931592553854,-73.91572,-73.90968,-73.90525,-73.90307,-73.90182,-73.89907,-73.90056,-73.90061,-73.8943,-73.89547,-73.89288,-73.88981,-73.8904,-73.89676,-73.89955,-73.89111,-73.91818,-73.9124,-73.90198,-73.90556,-73.90701,-73.91215,-73.90854,-73.90853,-73.90295,-73.90458,-73.89967,-73.90421,-73.89116,-73.9271575212479,-73.9060136675835,-74.0065012872219,-74.0010805428028,-73.908454477787,-73.90128,-73.89549,-73.90105,-73.9653038978577,-73.9343,-73.93114,-73.9365,-73.93353,-73.93306,-73.93017,-73.93008,-73.9322,-73.93488,-73.9293,-73.92693,-73.92338,-73.92628,-73.9261,-73.92926,-73.92565,-73.92299,-73.92011,-73.91493,-73.91959,-73.92192,-73.91642,-73.91136,-73.91105,-73.91367,-73.9008,-73.90351,-73.94963,-73.9503,-73.9507,-73.94763,-73.94716,-73.94709,-73.94613,-73.94447,-73.94222,-73.93896,-73.93607,-73.93051,-73.92539,-73.92512,-73.92285,-73.92199,-73.91977,-73.92222,-73.92748,-73.92772,-73.92825,-73.92284,-73.91656,-73.91387,-73.90909,-73.9717626571655,-73.95362,-73.93094,-73.9308,-73.92171,-73.92002,-73.91123,-73.90852,-73.9061,-74.01298,-73.90417,-73.938988,-73.93168,-73.92842,-73.92588,-73.9141568541527,-73.94191,-73.94237,-73.93596,-73.93679,-73.93363,-73.92538,-73.92602,-73.9876802265644,-73.9834785461426,-73.9900700747967,-73.903737,-73.937999,-74.0100082755089,-73.9851911,-73.992010653019,-73.9282,-73.9169637858868,0,-73.9415,-73.9941014349461,-73.91711,-73.9494225382805,-73.93378,-73.91396,-73.9284,-73.9119681715965,-73.978965729475,-73.959431,-73.9325501024723,-74.013449549675,-73.9907339215279,-73.91244,-73.90829,-73.94437,-73.8936,-74.0128648281097,-73.9893928170204,-73.9454877376556,-73.91433,-73.88873,-73.93327,-73.95346,-73.948,-73.93972,-73.93712,-73.94269,-73.93642,-73.93467,-73.974552154541,-73.9425,-73.93398,-73.94769,-73.95076,-73.95352,-73.9503,-73.94514,-73.93376,-73.93162,-73.95679,-73.96045,-73.96051,-73.95968,-73.95674,-73.9564,-73.95331,-73.95041,-73.95005,-73.94983,-73.94795,-73.94735,-73.94542,-73.94243,-73.93762,-73.93445,-73.93967,-73.93164,-73.93109,-73.9997144043991,-73.89965,-73.90145,-73.89927,-73.89499,-73.9626,-73.94019,-73.93974,-73.93472,-73.93618,-74.0330819785595,-73.91405,-73.91427,-73.89441,-73.90115,-73.9505,-73.94517,-73.89811,-73.90299,-73.93415,-73.909],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"setView":[[40.7128,-74.006],12,[]],"limits":{"lat":[0,40.88226],"lng":[-74.0867006778717,0]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
