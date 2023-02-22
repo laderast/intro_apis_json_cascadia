@@ -79,6 +79,21 @@ The response from catfacts is something like this:
 
 This is in JSON format, which we'll talk about in a sec.
 
+## Request {auto-animate=true}
+
+```{mermaid}
+sequenceDiagram
+    Our Computer->>+API Server: https://catfact.ninja/fact
+```
+
+## Response {auto-animate=true}
+
+```{mermaid}
+sequenceDiagram
+    Our Computer->>+API Server: https://catfact.ninja/fact
+    API Server->>+Our Computer: {"fact": "cats are cool", length: 34} 
+```
+
 ## Calling APIs from R using `httr2`
 
 The trick when sending API requests is that there is a "polite" way to do it, which is where the `httr2` package comes in.
@@ -100,12 +115,30 @@ req |>
   httr2::req_dry_run()
 ```
 
-Passing `req` into `httr2::req_dry_run()` will show us everything that `httr2` will send along with our request to the API server. It shows:
+Passing `req` into `httr2::req_dry_run()` will show us everything that `httr2` will send along with our request to the API server. 
 
-- the method we're using for the request (`GET`)
-- the host we're hitting (`catfact.ninja`),
-- the endpoint we want (`/fact`), and
-- the `User-Agent` we're using (`httr2/0.2.2`)
+## Parts of a HTTP request (GET)
+
+:::: {.columns}
+
+::: {.column}
+```{r}
+#| echo: false
+req |>
+  httr2::req_dry_run()
+```
+:::
+
+::: {.column}
+
+|Part|Code|
+|----|----|
+| Http Method | `GET` |
+| Host | `catfact.ninja`|
+| endpoint | `/fact`|
+|`User-Agent`|`httr2/0.2.2` |
+:::
+::::
 
 ## Calling the API using `req_perform()`
 
@@ -128,6 +161,29 @@ We can see that we get a structure that has a `Body`, which has what we're looki
 response |>
   httr2::resp_raw()
 ```
+
+## Parts of an HTTP Response
+
+:::: {.columns}
+
+:::{.column}
+```{r}
+response |>
+  httr2::resp_raw()
+```
+:::
+
+:::{.column}
+|Part|Code|
+|----|----|
+| Http Method | `GET` |
+| URL | `catfact.ninja/fact`|
+| Content-Type | `application/json`|
+|Body|`{"fact":"In 1987, cats overtook ..."}` |
+
+:::
+
+
 ## We just want the body
 
 So we can extract the body information using `httr2::resp_body_json()` (Your fact will differ from mine):
