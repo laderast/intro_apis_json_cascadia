@@ -22,7 +22,7 @@ library(tidyjson)
 library(plumber)
 ```
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this exercise, you should be able to:
 
