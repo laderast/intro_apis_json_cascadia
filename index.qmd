@@ -2,6 +2,7 @@
 title: "An gRadual Introduction to Web APIs and JSON"
 subtitle: "PDX-R User Group"
 author: Ted Laderas
+date: 2/23/2023
 format: 
   revealjs:
     scrollable: true
@@ -214,6 +215,19 @@ But we often want a `data.frame`!
 
 !["I Just Wanted a Data Frame"](data.frame.jpeg)
 
+## Limitations of web APIs
+
+- You're limited to what endpoints are available
+  - You may have to be creative in how you transform the data
+- Costs/Registration with API keys
+
+## API Etiquette
+
+- Be careful how many times you hit an API endpoint
+- Paginate large requests
+
+<https://www.publisto.com/1-2/>
+
 ## Let's try another endpoint
 
 Let's dive deeper into `catfact.ninja`. There's an endpoint called `/facts` and let's figure out how to get the information out.
@@ -335,12 +349,15 @@ raw_json <- httr2::request("https://gbfs.citibikenyc.com/gbfs/en/station_informa
 raw_json %>%
   tidyjson::enter_object(data) %>%
   tidyjson::enter_object(stations) %>%
+  # convert the JSON string to a list
   tidyjson::gather_array() %>%
+  # 
   tidyjson::as_tbl_json() %>%
   tidyjson::spread_values(name = jstring(name), 
                           lat = jnumber(lat),
                           lon = jnumber(lon)) |>
-  dplyr::relocate(name, lat, lon)
+  dplyr::select(name, lat, lon) |>
+  knitr::kable()
 ```
 
 ## POST: when you need to provide more info to the API
@@ -392,6 +409,8 @@ You can use the `{plumber}` package to publish your data as an API on a web serv
 
 ```{r}
 #| eval: false
+#| filename: plumber_script.R
+
 #* Echo back the input
 #* @param msg The message to echo
 #* @get /echo
@@ -407,4 +426,26 @@ function() {
   hist(rand)
 }
 ```
+
+## Running our Plumber Script
+
+We can run the API on our own machine using `pr_run`.
+
+```{r}
+#| eval: false
+library(plumber)
+plumber::pr("plumber.R") |>
+  plumber::pr_run(port = 8888)
+```
+Once the API is up, we can hit the url here <https://localhost:8888/echo?msg=cleo>
+
+## How do we get it out in the world?
+
+Your plumber script will need to be deployed to a server.
+
+Check out the `{plumberDeploy}` package for more info.
+
+## Don't forget `{pins}`
+
+If you need to share data, the `{pins}` package is a lightweight way to share it using something like a shared Dropbox folder.
 
