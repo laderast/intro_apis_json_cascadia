@@ -113,6 +113,8 @@ response <- req |>
 
 response
 ```
+Note there's a `GET` in our request. That is one of the methods for requesting via HTTP. We'll talk a little more about `POST` when we build JSON requests.
+
 
 ## Response from catfacts.ninja
 
@@ -184,6 +186,10 @@ json_bit$fact
 
 ## key/object
 
+Defined using `{}`, well formed JSON needs to be returned in an object, or a list `[]`
+
+The bottom example is returned as a JSON object, and note the value of `report_html` is an object itself.
+
 ```
 {
 "report_html": {
@@ -193,6 +199,8 @@ json_bit$fact
 ```
 
 ## Lists
+
+- A lot like Python
 
 ```
 ["mycat1", "mycat2", "mycat3"]
@@ -204,9 +212,11 @@ As we've discovered, JSON objects are mostly converted to lists in R using eithe
 
 But we often want a `data.frame`!
 
-![Meme that says "I Just Wanted a Data Frame"](data.frame.jpeg)
+!["I Just Wanted a Data Frame"](data.frame.jpeg)
 
 ## Let's try another endpoint
+
+Let's dive deeper into `catfact.ninja`. There's an endpoint called `/facts` and let's figure out how to get the information out.
 
 Change your `url` to <https://catfact.ninja/facts> and see what happens. How does the returned structure differ from <https://catfact.ninja/fact>?
 
@@ -315,9 +325,23 @@ leaflet::leaflet(cit) |>
 
 We were lucky this time around, but sometimes the JSON is not so `data.frame` friendly.
 
-However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in. This package gives us some dplyr like verbs to manipulate JSON data into `data.frame` structures.
+However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in. This package gives us some `dplyr` like verbs to manipulate JSON data into `data.frame` structures.
 
+```{r}
+library(tidyjson)
 
+raw_json <- httr2::request("https://gbfs.citibikenyc.com/gbfs/en/station_information.json") |> httr2::req_perform() |> httr2::resp_body_string()
+
+raw_json %>%
+  tidyjson::enter_object(data) %>%
+  tidyjson::enter_object(stations) %>%
+  tidyjson::gather_array() %>%
+  tidyjson::as_tbl_json() %>%
+  tidyjson::spread_values(name = jstring(name), 
+                          lat = jnumber(lat),
+                          lon = jnumber(lon)) |>
+  dplyr::relocate(name, lat, lon)
+```
 
 ## POST: when you need to provide more info to the API
 
@@ -327,18 +351,28 @@ There is an alternate method called POST that lets us add a "body" to our reques
 
 Guess what's in the body? Usually JSON.
 
-## How do we make APIs?
+## `httr2::req_body_json()`
 
-You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
+We can pass a list into `req_body_json()` when we build our `POST` request. It will need to have the same overall structure as the one required by the API.
 
 ```{r}
+json_body <- list(x = "A simple text string")
 
+req <- request("http://httpbin.org/post")
 
+req %>%
+  req_body_json(json_body) %>%
+  req_dry_run()
 ```
 
 ## Where Next?
 
 We've only covered APIs that don't require authentication. To access a lot of APIs, you will need an authentication token that you will need to provide in your API request.
+
+<https://httr2.r-lib.org/articles/wrapping-apis.html#secret-management>
+
+
+
 
 ## Play with some free APIs
 
@@ -350,4 +384,27 @@ If you want a larger overview of APIs, this is a nice course and document: <http
 
 ## Http Testing in R
 
-This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server, which is extremely helpful for debugging without hitting an API too many times.
+This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server using `{mockr}`, which is extremely helpful for debugging without hitting an API too many times.
+
+## How do we make APIs?
+
+You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
+
+```{r}
+#| eval: false
+#* Echo back the input
+#* @param msg The message to echo
+#* @get /echo
+function(msg="") {
+  list(msg = paste0("My cat's name is: '", msg, "'"))
+}
+
+#* Plot a histogram
+#* @serializer png
+#* @get /plot
+function() {
+  rand <- rnorm(100)
+  hist(rand)
+}
+```
+
