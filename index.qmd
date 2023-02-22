@@ -403,6 +403,14 @@ If you want a larger overview of APIs, this is a nice course and document: <http
 
 This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server using `{mockr}`, which is extremely helpful for debugging without hitting an API too many times.
 
+# Making your own APIs
+
+## Don't forget `{pins}`
+
+If you need to share data, the `{pins}` package is a lightweight way to share it using something like a shared Dropbox folder.
+
+<https://pins.rstudio.com/>
+
 ## How do we make APIs?
 
 You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
@@ -444,8 +452,4 @@ Once the API is up, we can hit the url here <https://localhost:8888/echo?msg=cle
 Your plumber script will need to be deployed to a server.
 
 Check out the `{plumberDeploy}` package for more info.
-
-## Don't forget `{pins}`
-
-If you need to share data, the `{pins}` package is a lightweight way to share it using something like a shared Dropbox folder.
 
