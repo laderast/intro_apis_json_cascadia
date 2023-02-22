@@ -5,6 +5,7 @@ author: Ted Laderas
 date: 2/23/2023
 format: 
   revealjs:
+    theme: sky
     scrollable: true
     standalone: true
     preview-links: true
@@ -19,10 +20,13 @@ echo: true
 library(httr2)
 library(jsonlite)
 library(tidyjson)
+library(leaflet)
 library(plumber)
 ```
 
-## Learning Objectives
+## Learning Objectives 
+
+:::{.incremental}
 
 By the end of this exercise, you should be able to:
 
@@ -33,7 +37,9 @@ By the end of this exercise, you should be able to:
 - **Utilize** `{tidyjson}` to extract data from JSON files
 - **Describe** how to deploy an API using `{plumber}`
 
-## What are APIs?
+:::
+
+## What are APIs? {.incremental}
 
 You may have heard of the term and wondered what it means. API is short for **A**pplication **P**rogram **I**nterface. In general, an API provides a way to interact with a code library. 
 
@@ -43,27 +49,33 @@ We'll be using a very specific definition:
 
 Even more specifically, we'll focus on Web APIs that let us fetch data.
 
-## The Basic Recipe
+## The Basic Recipe 
+
+:::{.incremental}
 
 1. Try to make sense of the API documentation
 1. Identify an API endpoint
 1. Request data/information using an API endpoint (GET/POST)
 1. Receive a response from the API server
 1. Figure out how to get the data out of the response (usually involves working with the returned JSON).
+:::
 
-## Let's make it more concrete
+## Let's make it more concrete 
 
-One API that's available is [Cat Facts](https://catfact.ninja/). This is an API that will give you random cat facts if you call a specific URL.
+:::{.incremental}
 
-If you look at [the API documentation for Cat Facts](https://catfact.ninja/docs/api-docs.json), you'll see that there are a number of **endpoints** that are defined.
+- One API that's available is [Cat Facts](https://catfact.ninja/). This is an API that will give you random cat facts if you call a specific URL.
 
-**Endpoints** are ways to communicate with the API to get what you want. Literally, an endpoint like `/fact` goes at the end of a URL, such as:
+- If you look at [the API documentation for Cat Facts](https://catfact.ninja/docs/api-docs.json), you'll see that there are a number of **endpoints** that are defined.
 
+- **Endpoints** are ways to communicate with the API to get what you want. Literally, an endpoint like `/fact` goes at the end of a URL, such as:
 ```
 https://catfact.ninja/fact
 ```
 
-I tend to think of endpoints like calling functions in a library.
+- I tend to think of endpoints like calling functions in a library.
+
+:::
 
 ## Let's Try it Out
 
@@ -71,7 +83,7 @@ For example, if I wanted a random cat fact, I could hit this link (try it out in
 
 <https://catfact.ninja/fact>
 
-The response from catfacts is something like this:
+The response from catfact.ninja is something like this:
 
 ```
 {"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you.","length":90}
@@ -213,8 +225,8 @@ json_bit$fact
 
 ## Why is knowing JSON useful?
 
-- It is used to send requests using POST
 - It is used to encode data
+- It is used to send requests using POST
 
 
 # APIs use JSON to handle both requests and responses
@@ -279,14 +291,14 @@ But we often want a `data.frame`!
 
 - You're limited to what endpoints are available
   - You may have to be creative in how you transform the data
-- Costs/Registration with API keys
+- May need to Register with an API keys
 
 ## API Etiquette
 
+- APIs are expensive to maintain
 - Be careful how many times you hit an API endpoint
-- Paginate large requests
-
-<https://www.publisto.com/1-2/>
+- Throttle large numbers of requests
+  - Instead of 1000x a second, maybe 50x?
 
 ## Let's try another endpoint
 
@@ -406,18 +418,24 @@ library(tidyjson)
 
 raw_json <- httr2::request("https://gbfs.citibikenyc.com/gbfs/en/station_information.json") |> httr2::req_perform() |> httr2::resp_body_string()
 
-raw_json %>%
+station_df <- raw_json %>%
   tidyjson::enter_object(data) %>%
   tidyjson::enter_object(stations) %>%
   # convert the JSON string to a list
   tidyjson::gather_array() %>%
-  # 
+  # tbl_json is tidyjson format
   tidyjson::as_tbl_json() %>%
+  # extract values from the JSON list
   tidyjson::spread_values(name = jstring(name), 
                           lat = jnumber(lat),
                           lon = jnumber(lon)) |>
-  dplyr::select(name, lat, lon) |>
-  knitr::kable()
+  dplyr::select(name, lat, lon)
+```
+
+## Result
+
+```{r}
+knitr::kable(station_df)
 ```
 
 ## POST: when you need to provide more info to the API
