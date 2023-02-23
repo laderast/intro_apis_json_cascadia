@@ -337,6 +337,39 @@ If we dig further, we can see that the `$data` slot is a numbered list.
 resp_json$data
 ```
 
+## JSON versus R-Lists
+
+|JSON|R-List|
+|----|------|
+|`[]`|Unnamed list (has numbered slots)|
+|`{}`|Named List (has named slots)|
+|key:value|`key=value`|
+
+::::{.columns}
+:::{.column}
+### JSON
+```
+[{"zebra":"horse"},
+ {"cow":"donkey"}
+]
+```
+
+:::
+
+:::{.column}
+### R-List
+
+```
+list(. 
+  list(zebra="horse"),
+  list(cow="donkey")
+  )
+```
+:::
+
+::::
+
+
 ## `purrr` to the rescue
 
 We want the 10 facts out of the list. We can use `purrr::pluck()` to extract the `data` slot and `purrr::map` to grab the fact for each of the numbered slots:
