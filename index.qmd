@@ -360,7 +360,7 @@ resp_json$data
 ### R-List
 
 ```
-list(. 
+list( 
   list(zebra="horse"),
   list(cow="donkey")
   )
