@@ -24,6 +24,9 @@ library(leaflet)
 library(plumber)
 ```
 
+- [Posit Cloud Project](https://posit.cloud/content/5481225)
+- You will need a free posit.cloud project to clone it.
+
 ## Learning Objectives 
 
 :::{.incremental}
@@ -299,6 +302,18 @@ But we often want a `data.frame`!
 - Be careful how many times you hit an API endpoint
 - Throttle large numbers of requests
   - Instead of 1000x a second, maybe 50x?
+  
+## What about other parameters to post?
+
+Catfact.ninja doesn't require any parameters. But what about an API that requires a zipcode?
+
+We can pass parameters in using `req_url_query()`:
+
+```{r}
+httr2::request("https://myapi.org") |>
+  httr2::req_url_query(zip_code="98552") |>
+  httr2::req_dry_run()
+```
 
 ## Let's try another endpoint
 
