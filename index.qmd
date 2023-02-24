@@ -303,14 +303,14 @@ But we often want a `data.frame`!
 - Throttle large numbers of requests
   - Instead of 1000x a second, maybe 50x?
   
-## What about other parameters to post?
+## What about other parameters to GET?
 
-Catfact.ninja doesn't require any parameters. But what about an API that requires a zipcode?
+Catfact.ninja doesn't require any parameters. But what about an API that requires a zipcode? 
 
 We can pass parameters in using `req_url_query()`:
 
 ```{r}
-httr2::request("https://myapi.org") |>
+httr2::request("https://myapi.org/search") |>
   httr2::req_url_query(zip_code="98552") |>
   httr2::req_dry_run()
 ```
@@ -496,6 +496,17 @@ There is an alternate method called POST that lets us add a "body" to our reques
 
 Guess what's in the body? Usually JSON.
 
+## GET vs. POST
+
+```{mermaid}
+flowchart TD
+    C{Need a Body\n in Your Request?}
+    C -->|No| D[GET]
+    C -->|Yes| E[POST]
+```
+
+If you have a `req_body_*()` in your httr2 pipeline (such as `req_body_json()`), then your request will become a `POST`. Otherwise, the default is `GET`.
+
 ## `httr2::req_body_json()`
 
 We can pass a list into `req_body_json()` when we build our `POST` request. It will need to have the same overall structure as the one required by the API.
@@ -503,7 +514,7 @@ We can pass a list into `req_body_json()` when we build our `POST` request. It w
 ```{r}
 json_body <- list(x = "A simple text string")
 
-req <- request("http://httpbin.org/post")
+req <- request("http://httpbin.org/search")
 
 req %>%
   req_body_json(json_body) %>%
@@ -516,20 +527,19 @@ We've only covered APIs that don't require authentication. To access a lot of AP
 
 <https://httr2.r-lib.org/articles/wrapping-apis.html#secret-management>
 
-
-
-
 ## Play with some free APIs
 
 <https://apipheny.io/free-api/>
 
 ## More About APIs
 
-If you want a larger overview of APIs, this is a nice course and document: <https://zapier.com/learn/apis/> It describes in much greater detail about request and response structure, the types of requests (GET, POST, SET, DELETE), and API design.
+If you want a larger overview of APIs, this is a nice course and document: <https://zapier.com/learn/apis/> 
+
+It describes in much greater detail about request and response structure, the types of requests (GET, POST, SET, DELETE), and API design.
 
 ## Http Testing in R
 
-This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server using `{mockr}`, which is extremely helpful for debugging without hitting an API too many times.
+This book [Http Testing in R](https://books.ropensci.org/http-testing/) is where you should go next if you're interested in building an API package, as it shows you how to build tests using a mock data server using `{webmockr}`, which is extremely helpful for debugging without hitting an API too many times.
 
 # Making your own APIs
 
@@ -539,7 +549,7 @@ If you need to share data, the `{pins}` package is a lightweight way to share it
 
 <https://pins.rstudio.com/>
 
-## How do we make APIs?
+## How do we make APIs (in R)?
 
 You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
 
@@ -581,3 +591,18 @@ Your plumber script will need to be deployed to a server.
 
 Check out the `{plumberDeploy}` package for more info.
 
+## Hopefully you learned 
+
+- **Define** web APIs (Application Programming Interfaces) and how to interact with them
+- **Utilize** the `{httr2}` package to send requests to an API
+- **Define** the basic elements of JSON 
+- **Use** the `{jsonlite}` to extract data frames
+- **Utilize** `{tidyjson}` to extract data from JSON files
+- **Describe** how to deploy an API using `{plumber}`
+
+# Thanks! Questions?
+
+- @tladeras 
+- <https://laderast.github.io>
+- @tladeras@mastodon.cloud
+- Repo for this talk: https://github.com/laderast/intro_apis_json/
