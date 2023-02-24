@@ -345,6 +345,8 @@ resp_json$data
 |`{}`|Named List (has named slots)|
 |key:value|`key=value`|
 
+## Example of JSON/R-List
+
 ::::{.columns}
 :::{.column}
 ### JSON
@@ -528,7 +530,7 @@ You can use the `{plumber}` package to publish your data as an API on a web serv
 
 ```{r}
 #| eval: false
-#| filename: plumber_script.R
+#| filename: plumber.R
 
 #* Echo back the input
 #* @param msg The message to echo
