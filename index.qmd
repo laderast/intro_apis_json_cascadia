@@ -168,7 +168,7 @@ response
 Note there's a `GET` in our request. That is one of the methods for requesting via HTTP. We'll talk a little more about `POST` when we build JSON requests.
 
 
-## Response from catfacts.ninja
+## Response from catfact.ninja
 
 We can see that we get a structure that has a `Body`, which has what we're looking for. Specifically the Body contains a `content-type` of `application/json`.
 
