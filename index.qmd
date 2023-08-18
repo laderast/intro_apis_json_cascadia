@@ -1,8 +1,8 @@
 ---
 title: "An gRadual Introduction to Web APIs and JSON"
-subtitle: "PDX-R User Group"
+subtitle: "Cascadia-R Conference"
 author: Ted Laderas
-date: 2/23/2023
+date: 8/19/2023
 format: 
   revealjs:
     theme: sky
@@ -10,7 +10,7 @@ format:
     standalone: true
     preview-links: true
     progress: true
-    footer: <https://laderast.github.io/intro_apis_json>
+    footer: <https://laderast.github.io/intro_apis_json_cascadia>
 echo: true
 ---
 
@@ -35,10 +35,8 @@ By the end of this exercise, you should be able to:
 
 - **Define** web APIs (Application Programming Interfaces) and how to interact with them
 - **Utilize** the `{httr2}` package to send requests to an API
-- **Define** the basic elements of JSON 
 - **Use** the `{jsonlite}` to extract data frames
 - **Utilize** `{tidyjson}` to extract data from JSON files
-- **Describe** how to deploy an API using `{plumber}`
 
 :::
 
@@ -60,29 +58,32 @@ Even more specifically, we'll focus on Web APIs that let us fetch data.
 1. Identify an API endpoint
 1. Request data/information using an API endpoint (GET/POST)
 1. Receive a response from the API server
-1. Figure out how to get the data out of the response (usually involves working with the returned JSON).
+1. Figure out how to get the data out of the response
 :::
 
 ## Let's make it more concrete 
 
-:::{.incremental}
+- One API that's available is [Cat Facts](https://catfact.ninja/). 
 
-- One API that's available is [Cat Facts](https://catfact.ninja/). This is an API that will give you random cat facts if you call a specific URL.
+- [API documentation for Cat Facts](https://catfact.ninja/docs/api-docs.json), --> **endpoints** that are defined.
 
-- If you look at [the API documentation for Cat Facts](https://catfact.ninja/docs/api-docs.json), you'll see that there are a number of **endpoints** that are defined.
+- **Endpoints** are ways to communicate with the API
 
-- **Endpoints** are ways to communicate with the API to get what you want. Literally, an endpoint like `/fact` goes at the end of a URL, such as:
+
+## What is an endpoint?
+
+- Literally, an endpoint like `/fact` goes at the end of a URL, such as:
 ```
 https://catfact.ninja/fact
 ```
 
 - I tend to think of endpoints like calling functions in a library.
 
-:::
+
 
 ## Let's Try it Out
 
-For example, if I wanted a random cat fact, I could hit this link (try it out in your browser):
+For example, if I wanted a random cat fact:
 
 <https://catfact.ninja/fact>
 
@@ -97,6 +98,7 @@ This is in JSON format, which we'll talk about in a sec.
 ## Request {auto-animate=true}
 
 ```{mermaid}
+%%| echo: false
 sequenceDiagram
     Our Computer->>+API Server: https://catfact.ninja/fact
 ```
@@ -104,6 +106,7 @@ sequenceDiagram
 ## Response {auto-animate=true}
 
 ```{mermaid}
+%%| echo: false
 sequenceDiagram
     Our Computer->>+API Server: https://catfact.ninja/fact
     API Server->>+Our Computer: {"fact": "cats are cool", length: 34} 
@@ -111,11 +114,9 @@ sequenceDiagram
 
 ## Calling APIs from R using `httr2`
 
-The trick when sending API requests is that there is a "polite" way to do it, which is where the `httr2` package comes in.
+Okay, now we have an API endpoint we want to hit: <https://catfact.ninja/fact>. 
 
-Okay, now we have an API endpoint we want to hit: <https://catfact.ninja/fact>. How do we call it in R?
-
-We first encode the URL with `httr2::request()`. Then we'll show the what the actual request looks like with `req_dry_run()`:
+How do we call it in R? We use `{httr2}`
 
 ```{r}
 url <- "https://catfact.ninja/fact"
@@ -223,7 +224,6 @@ json_bit$fact
 
 - **J**ava**S**cript **O**bject **N**otation
 - Common format for communicating with Application Program Interface (API) servers and receiving results/data from that API
-- Used to access DNAnexus API servers
 
 
 ## Why is knowing JSON useful?
@@ -234,92 +234,47 @@ json_bit$fact
 
 # APIs use JSON to handle both requests and responses
 
+## Example of JSON
 
-## Components of a JSON file
-
-- Object: 
-  - `{}` Used to contain key-value pairs and nest values
-- key:value pairs
-  - `"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you."`
-- Lists:
-  - `[]`- Used to submit multiple values
-  - Much like python lists
-
-.footnote[http://json-schema.org/draft-04/json-schema-core.html]
-
-
-## key/value pairs
-
-- have the format: `"key": "value"`
-- example:
-
+::::{.columns}
+:::{.column}
+### JSON
 ```
-{
-"fact":"If your cat snores, or rolls over on his back to expose his belly, it means he trusts you."
-}
+[{"zebra":"horse"}, 
+ {"cow":"donkey"}
+]
 ```
 
+:::
 
-## key/object
+:::{.column}
+:::
 
-Defined using `{}`, well formed JSON needs to be returned in an object, or a list `[]`
+::::
 
-The bottom example is returned as a JSON object, and note the value of `report_html` is an object itself.
 
-```
-{
-"report_html": {
-    "dnanexus_link": "file-G4x7GX80VBzQy64k4jzgjqgY"
-  }
-}
-```
-
-## Lists
-
-- A lot like Python
-
-```
-["mycat1", "mycat2", "mycat3"]
-```
 
 ## How does R translate JSON?
 
+::::{.columns}
+:::{.column}
 As we've discovered, JSON objects are mostly converted to lists in R using either `httr2` or `jsonlite`.
 
 But we often want a `data.frame`!
+:::
 
+:::{.column}
 !["I Just Wanted a Data Frame"](data.frame.jpeg)
-
-## Limitations of web APIs
-
-- You're limited to what endpoints are available
-  - You may have to be creative in how you transform the data
-- May need to Register with an API keys
-
-## API Etiquette
-
-- APIs are expensive to maintain
-- Be careful how many times you hit an API endpoint
-- Throttle large numbers of requests
-  - Instead of 1000x a second, maybe 50x?
-  
-## What about other parameters to GET?
-
-Catfact.ninja doesn't require any parameters. But what about an API that requires a zipcode? 
-
-We can pass parameters in using `req_url_query()`:
-
-```{r}
-httr2::request("https://myapi.org/search") |>
-  httr2::req_url_query(zip_code="98552") |>
-  httr2::req_dry_run()
-```
+:::
+::::
 
 ## Let's try another endpoint
 
 Let's dive deeper into `catfact.ninja`. There's an endpoint called `/facts` and let's figure out how to get the information out.
 
 Change your `url` to <https://catfact.ninja/facts> and see what happens. How does the returned structure differ from <https://catfact.ninja/fact>?
+
+## Response
 
 ```{r}
 url <- "https://catfact.ninja/facts"
@@ -457,69 +412,6 @@ leaflet::leaflet(cit) |>
 
 ```
 
-## {tidyjson}
-
-We were lucky this time around, but sometimes the JSON is not so `data.frame` friendly.
-
-However, there are a lot of JSON documents that aren't that friendly. That's where `{tidyjson}` comes in. This package gives us some `dplyr` like verbs to manipulate JSON data into `data.frame` structures.
-
-```{r}
-library(tidyjson)
-
-raw_json <- httr2::request("https://gbfs.citibikenyc.com/gbfs/en/station_information.json") |> httr2::req_perform() |> httr2::resp_body_string()
-
-station_df <- raw_json %>%
-  tidyjson::enter_object(data) %>%
-  tidyjson::enter_object(stations) %>%
-  # convert the JSON string to a list
-  tidyjson::gather_array() %>%
-  # tbl_json is tidyjson format
-  tidyjson::as_tbl_json() %>%
-  # extract values from the JSON list
-  tidyjson::spread_values(name = jstring(name), 
-                          lat = jnumber(lat),
-                          lon = jnumber(lon)) |>
-  dplyr::select(name, lat, lon)
-```
-
-## Result
-
-```{r}
-knitr::kable(station_df)
-```
-
-## POST: when you need to provide more info to the API
-
-So far, we've just worked with APIs that use urls. 
-
-There is an alternate method called POST that lets us add a "body" to our request. 
-
-Guess what's in the body? Usually JSON.
-
-## GET vs. POST
-
-```{mermaid}
-flowchart TD
-    C{Need a Body\n in Your Request?}
-    C -->|No| D[GET]
-    C -->|Yes| E[POST]
-```
-
-If you have a `req_body_*()` in your httr2 pipeline (such as `req_body_json()`), then your request will become a `POST`. Otherwise, the default is `GET`.
-
-## `httr2::req_body_json()`
-
-We can pass a list into `req_body_json()` when we build our `POST` request. It will need to have the same overall structure as the one required by the API.
-
-```{r}
-json_body <- list(x = "A simple text string")
-
-req <- request("http://httpbin.org/search")
-
-req %>%
-  req_body_json(json_body) %>%
-  req_dry_run()
-```
 
 ## Where Next?
 
@@ -549,60 +441,17 @@ If you need to share data, the `{pins}` package is a lightweight way to share it
 
 <https://pins.rstudio.com/>
 
-## How do we make APIs (in R)?
 
-You can use the `{plumber}` package to publish your data as an API on a web server that is also running R. 
-
-```{r}
-#| eval: false
-#| filename: plumber.R
-
-#* Echo back the input
-#* @param msg The message to echo
-#* @get /echo
-function(msg="") {
-  list(msg = paste0("My cat's name is: '", msg, "'"))
-}
-
-#* Plot a histogram
-#* @serializer png
-#* @get /plot
-function() {
-  rand <- rnorm(100)
-  hist(rand)
-}
-```
-
-## Running our Plumber Script
-
-We can run the API on our own machine using `pr_run`.
-
-```{r}
-#| eval: false
-library(plumber)
-plumber::pr("plumber.R") |>
-  plumber::pr_run(port = 8888)
-```
-Once the API is up, we can hit the url here <https://localhost:8888/echo?msg=cleo>
-
-## How do we get it out in the world?
-
-Your plumber script will need to be deployed to a server.
-
-Check out the `{plumberDeploy}` package for more info.
 
 ## Hopefully you learned 
 
 - **Define** web APIs (Application Programming Interfaces) and how to interact with them
 - **Utilize** the `{httr2}` package to send requests to an API
-- **Define** the basic elements of JSON 
 - **Use** the `{jsonlite}` to extract data frames
-- **Utilize** `{tidyjson}` to extract data from JSON files
-- **Describe** how to deploy an API using `{plumber}`
 
 # Thanks! Questions?
 
 - @tladeras 
 - <https://laderast.github.io>
 - @tladeras@mastodon.cloud
-- Repo for this talk: https://github.com/laderast/intro_apis_json/
+- Repo for this talk: https://github.com/laderast/intro_apis_json_cascadia/
