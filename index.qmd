@@ -31,7 +31,7 @@ library(plumber)
 ## Who this talk is for
 
 - Anyone who has heard the term "API" and ran away in fear
-- Those who have never made APIs calls in R
+- Those who have never made API calls in R
 
 ## Learning Objectives 
 
