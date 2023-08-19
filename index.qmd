@@ -198,12 +198,14 @@ content-type: application/json
 :::
 
 :::{.column}
+:::{.smaller}
 |Part|Code|
 |----|----|
 | Http Method | `GET` |
 | URL | `catfact.ninja/fact`|
 | Content-Type | `application/json`|
 |Body|`{"fact":"The lightest cat on record ..."}` |
+:::
 :::
 ::::
 
@@ -244,25 +246,17 @@ Ok, we've got a list and we need to extract our info.
 - Used to encode data in the API responses
 
 
-# APIs use JSON to handle both requests and responses
+# JSON is the language of the internet
 
 ## Example of JSON
 
-::::{.columns}
-:::{.column}
-### JSON
 ```
-[{"zebra":"horse"}, 
- {"cow":"donkey"}
-]
+{
+ "horse":"mustang", 
+ "cows":["holstein", "hereford", "red angus"]
+}
 ```
 
-:::
-
-:::{.column}
-:::
-
-::::
 
 ## How does R translate JSON?
 
@@ -294,9 +288,10 @@ But we often want a `data.frame`!
 :::{.column}
 ### JSON
 ```
-[{"zebra":"horse"},
- {"cow":"donkey"}
-]
+{
+ "horse":"mustang", 
+ "cows":["holstein", "hereford", "red angus"]
+}
 ```
 
 :::
@@ -306,8 +301,10 @@ But we often want a `data.frame`!
 
 ```
 list( 
-  list(zebra="horse"),
-  list(cow="donkey")
+  list(horse="mustang"),
+  list(cows=
+       list("holstein", "hereford", "red angus)
+      )
   )
 ```
 :::
